@@ -1,0 +1,108 @@
+{
+  "config": {
+    "experiment": {
+      "name": "h4_mvp",
+      "seed": 7,
+      "output_dir": "runs/h4_cudaq_default"
+    },
+    "molecule": {
+      "name": "H4",
+      "bond_length_angstrom": 0.88,
+      "basis": "6-31g",
+      "active_electrons": 4,
+      "active_orbitals": 4,
+      "geometry": "linear_chain"
+    },
+    "operator_pool": {
+      "sequence_length": 20,
+      "excitation_angle": 0.7853981633974483,
+      "include_noop": true
+    },
+    "qsci": {
+      "shots": 1000,
+      "dmax": 100,
+      "add_hf_det": true,
+      "backend": "cudaq",
+      "cudaq_target": "qpp-cpu",
+      "cudaq_option": null,
+      "cudaq_reverse_bitstrings": false
+    },
+    "model": {
+      "d_model": 64,
+      "n_layers": 2,
+      "n_heads": 4,
+      "latent_dim": 12,
+      "qkan_layers": 1,
+      "daruan_terms": 4,
+      "dropout": 0.0
+    },
+    "training": {
+      "iterations": 10,
+      "batch_circuits": 4,
+      "policy_updates": 2,
+      "learning_rate": 5e-06,
+      "weight_decay": 0.01,
+      "grpo_clip": 0.2,
+      "repetition_penalty": 1.2,
+      "temperature": 1.0,
+      "device": "cpu"
+    }
+  },
+  "references": {
+    "hf_energy": -2.174799879875691,
+    "casci_energy": -2.1951805499916266,
+    "n_qubits": 8,
+    "n_determinants": 36
+  },
+  "operator_pool": {
+    "vocab_size": 27,
+    "sequence_length": 20
+  },
+  "model": {
+    "parameters": 47805,
+    "parameter_memory_mb": 0.18236160278320312
+  },
+  "best": {
+    "energy": -2.1951805499916217,
+    "error": 4.884981308350689e-15,
+    "sequence": [
+      23,
+      15,
+      4,
+      8,
+      6,
+      14,
+      16,
+      26,
+      17,
+      3,
+      7,
+      15,
+      21,
+      1,
+      10,
+      24,
+      1,
+      15,
+      0,
+      25
+    ],
+    "iteration": 3,
+    "gate_count": {
+      "x": 4,
+      "rx": 412,
+      "h": 412,
+      "cx": 964,
+      "rz": 110,
+      "total": 1902,
+      "two_qubit": 964
+    }
+  },
+  "final": {
+    "iteration": 9,
+    "mean_energy": -2.1897834834320884,
+    "best_batch_energy": -2.1932589899368065,
+    "best_so_far_error": 4.884981308350689e-15,
+    "final_batch_best_error": 0.0019215600548201373
+  }
+}

@@ -1,0 +1,46 @@
+experiment:
+  name: h4_mvp
+  seed: 7
+  output_dir: runs/h4_mvp
+
+molecule:
+  name: H4
+  bond_length_angstrom: 0.88
+  basis: 6-31g
+  active_electrons: 4
+  active_orbitals: 4
+  geometry: linear_chain
+
+operator_pool:
+  sequence_length: 20
+  excitation_angle: 0.7853981633974483  # pi/4
+  include_noop: true
+
+qsci:
+  shots: 1000        # paper-like: 100000
+  dmax: 100          # paper-like: 2000
+  add_hf_det: true
+  backend: determinant  # determinant or cudaq
+  cudaq_target: null    # examples: qpp-cpu, nvidia, tensornet
+  cudaq_option: null    # examples: mgpu for target nvidia
+  cudaq_reverse_bitstrings: false
+
+model:
+  d_model: 64
+  n_layers: 2
+  n_heads: 4
+  latent_dim: 12
+  qkan_layers: 1
+  daruan_terms: 4
+  dropout: 0.0
+
+training:
+  iterations: 10     # paper-like: 100
+  batch_circuits: 4  # paper-like: 10
+  policy_updates: 2  # paper-like: 30
+  learning_rate: 0.000005
+  weight_decay: 0.01
+  grpo_clip: 0.2
+  repetition_penalty: 1.2
+  temperature: 1.0
+  device: cpu

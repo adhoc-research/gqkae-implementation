@@ -1,0 +1,107 @@
+{
+  "config": {
+    "experiment": {
+      "name": "h4_cudaq_smoke",
+      "seed": 7,
+      "output_dir": "runs/h4_cudaq_smoke"
+    },
+    "molecule": {
+      "name": "H4",
+      "bond_length_angstrom": 0.88,
+      "basis": "6-31g",
+      "active_electrons": 4,
+      "active_orbitals": 4,
+      "geometry": "linear_chain"
+    },
+    "operator_pool": {
+      "sequence_length": 20,
+      "excitation_angle": 0.7853981633974483,
+      "include_noop": true
+    },
+    "qsci": {
+      "shots": 200,
+      "dmax": 20,
+      "add_hf_det": true,
+      "backend": "cudaq",
+      "cudaq_target": "qpp-cpu",
+      "cudaq_option": null,
+      "cudaq_reverse_bitstrings": false
+    },
+    "model": {
+      "d_model": 64,
+      "n_layers": 2,
+      "n_heads": 4,
+      "latent_dim": 12,
+      "qkan_layers": 1,
+      "daruan_terms": 4,
+      "dropout": 0.0
+    },
+    "training": {
+      "iterations": 2,
+      "batch_circuits": 2,
+      "policy_updates": 1,
+      "learning_rate": 5e-06,
+      "weight_decay": 0.01,
+      "grpo_clip": 0.2,
+      "repetition_penalty": 1.2,
+      "temperature": 1.0,
+      "device": "cpu"
+    }
+  },
+  "references": {
+    "hf_energy": -2.174799879875693,
+    "casci_energy": -2.1951805499916257,
+    "n_qubits": 8,
+    "n_determinants": 36
+  },
+  "operator_pool": {
+    "vocab_size": 27,
+    "sequence_length": 20
+  },
+  "model": {
+    "parameters": 47805,
+    "parameter_memory_mb": 0.18236160278320312
+  },
+  "best": {
+    "energy": -2.1914493989791937,
+    "error": 0.0037311510124320435,
+    "sequence": [
+      24,
+      17,
+      18,
+      13,
+      18,
+      2,
+      25,
+      17,
+      18,
+      3,
+      2,
+      26,
+      3,
+      22,
+      20,
+      2,
+      10,
+      13,
+      26,
+      25
+    ],
+    "iteration": 0,
+    "gate_count": {
+      "x": 4,
+      "rx": 500,
+      "h": 500,
+      "cx": 1180,
+      "rz": 130,
+      "total": 2314
+    }
+  },
+  "final": {
+    "iteration": 1,
+    "mean_energy": -2.18629785715422,
+    "best_batch_energy": -2.189319814343896,
+    "best_so_far_error": 0.0037311510124320435,
+    "final_batch_best_error": 0.005860735647729598
+  }
+}

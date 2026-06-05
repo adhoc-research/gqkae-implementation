@@ -1,0 +1,32 @@
+[
+  {
+    "iteration": 0,
+    "energies": [
+      -2.1914493989791937,
+      -2.190212248503456
+    ],
+    "mean_energy": -2.190830823741325,
+    "best_batch_energy": -2.1914493989791937,
+    "best_so_far_energy": -2.1914493989791937,
+    "best_so_far_error": 0.0037311510124320435,
+    "mean_subspace_dimension": 20.0,
+    "mean_loss": -0.01163311768323183,
+    "mean_total_gates": 2194.0,
+    "mean_two_qubit_gates": 0.0
+  },
+  {
+    "iteration": 1,
+    "energies": [
+      -2.189319814343896,
+      -2.1832758999645447
+    ],
+    "mean_energy": -2.18629785715422,
+    "best_batch_energy": -2.189319814343896,
+    "best_so_far_energy": -2.1914493989791937,
+    "best_so_far_error": 0.0037311510124320435,
+    "mean_subspace_dimension": 20.0,
+    "mean_loss": -0.009591953828930855,
+    "mean_total_gates": 2196.0,
+    "mean_two_qubit_gates": 0.0
+  }
+]

@@ -1,0 +1,55 @@
+[project]
+name = "gqkae-mvp"
+version = "0.1.0"
+description = "Minimal H4 reimplementation of the Generative Quantum-inspired Kolmogorov-Arnold Eigensolver"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "numpy>=1.26,<2.3",
+  "scipy>=1.11,<1.16",
+  "pyyaml>=6.0",
+  "pyscf>=2.5",
+  "torch>=2.2",
+]
+
+[project.optional-dependencies]
+cuda = [
+  "cudaq>=0.14; platform_system == 'Linux' and python_version >= '3.11'",
+  "cuda-quantum-cu13>=0.14; platform_system == 'Linux' and python_version >= '3.11'",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+
+[project.scripts]
+gqkae-train-mvp = "gqkae.training.runner:main"
+gqkae-evaluate-mvp = "gqkae.reporting:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.ruff]
+line-length = 100
+src = ["src", "scripts", "tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gqkae"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

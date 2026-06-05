@@ -1,0 +1,136 @@
+iter=000 mean_E=-2.1951251773 best_err=-3.552714e-15 loss=2.3194e-03
+iter=001 mean_E=-2.1943836875 best_err=-4.440892e-15 loss=-7.1796e-03
+iter=002 mean_E=-2.1922487142 best_err=-4.440892e-15 loss=2.3919e-03
+iter=003 mean_E=-2.1948760241 best_err=-4.440892e-15 loss=2.9126e-03
+iter=004 mean_E=-2.1916260058 best_err=-4.440892e-15 loss=-2.8769e-03
+iter=005 mean_E=-2.1946503732 best_err=-4.440892e-15 loss=-3.4046e-03
+iter=006 mean_E=-2.1910811906 best_err=-4.440892e-15 loss=-1.0069e-03
+iter=007 mean_E=-2.1943935765 best_err=-4.440892e-15 loss=-7.5618e-04
+iter=008 mean_E=-2.1942162201 best_err=-4.440892e-15 loss=-5.0063e-03
+iter=009 mean_E=-2.1922868114 best_err=-4.440892e-15 loss=-6.1421e-03
+iter=010 mean_E=-2.1929335449 best_err=-4.440892e-15 loss=-9.1650e-03
+iter=011 mean_E=-2.1949250592 best_err=-4.440892e-15 loss=-7.0756e-04
+iter=012 mean_E=-2.1927873021 best_err=-4.440892e-15 loss=-2.3762e-03
+iter=013 mean_E=-2.1948680082 best_err=-4.440892e-15 loss=-3.7377e-03
+iter=014 mean_E=-2.1947960968 best_err=-4.440892e-15 loss=-3.6547e-03
+iter=015 mean_E=-2.1935643834 best_err=-4.440892e-15 loss=-9.0381e-04
+iter=016 mean_E=-2.1906256204 best_err=-4.440892e-15 loss=-1.7213e-03
+iter=017 mean_E=-2.1933660732 best_err=-4.440892e-15 loss=-9.7739e-03
+iter=018 mean_E=-2.1925210374 best_err=-4.440892e-15 loss=-5.6831e-03
+iter=019 mean_E=-2.1946683196 best_err=-4.440892e-15 loss=-6.2283e-03
+iter=020 mean_E=-2.1924001263 best_err=-4.440892e-15 loss=-8.6090e-04
+iter=021 mean_E=-2.1935096039 best_err=-4.440892e-15 loss=-7.5336e-04
+iter=022 mean_E=-2.1928684509 best_err=-4.440892e-15 loss=-2.5297e-03
+iter=023 mean_E=-2.1939282052 best_err=-4.440892e-15 loss=1.1258e-03
+iter=024 mean_E=-2.1917973226 best_err=-4.440892e-15 loss=-1.7769e-03
+iter=025 mean_E=-2.1939228973 best_err=-4.440892e-15 loss=-6.2499e-03
+iter=026 mean_E=-2.1927116653 best_err=-4.440892e-15 loss=8.0407e-03
+iter=027 mean_E=-2.1931152340 best_err=-4.884981e-15 loss=-6.9005e-04
+iter=028 mean_E=-2.1946847726 best_err=-4.884981e-15 loss=-4.7208e-03
+iter=029 mean_E=-2.1923233907 best_err=-4.884981e-15 loss=-5.0678e-03
+iter=030 mean_E=-2.1910395826 best_err=-4.884981e-15 loss=-1.7155e-03
+iter=031 mean_E=-2.1907385545 best_err=-4.884981e-15 loss=2.0292e-03
+iter=032 mean_E=-2.1918191272 best_err=-5.329071e-15 loss=-7.3706e-03
+iter=033 mean_E=-2.1925799339 best_err=-5.329071e-15 loss=-1.5165e-03
+iter=034 mean_E=-2.1917637123 best_err=-5.329071e-15 loss=-5.2169e-03
+iter=035 mean_E=-2.1904905788 best_err=-5.329071e-15 loss=-3.5276e-03
+iter=036 mean_E=-2.1938840553 best_err=-5.329071e-15 loss=-5.4947e-03
+iter=037 mean_E=-2.1925020037 best_err=-5.329071e-15 loss=2.1286e-03
+iter=038 mean_E=-2.1931707825 best_err=-5.329071e-15 loss=2.8722e-03
+iter=039 mean_E=-2.1925943196 best_err=-5.329071e-15 loss=-4.8885e-03
+iter=040 mean_E=-2.1939425062 best_err=-5.329071e-15 loss=-5.5370e-03
+iter=041 mean_E=-2.1931891365 best_err=-5.329071e-15 loss=7.3167e-04
+iter=042 mean_E=-2.1926062138 best_err=-5.329071e-15 loss=-2.0671e-03
+iter=043 mean_E=-2.1925975468 best_err=-5.329071e-15 loss=-2.6283e-03
+iter=044 mean_E=-2.1929949170 best_err=-5.329071e-15 loss=3.1646e-05
+iter=045 mean_E=-2.1937972355 best_err=-5.329071e-15 loss=-3.2021e-03
+iter=046 mean_E=-2.1880123222 best_err=-5.773160e-15 loss=5.0339e-03
+iter=047 mean_E=-2.1943070081 best_err=-5.773160e-15 loss=-2.0243e-03
+iter=048 mean_E=-2.1939731158 best_err=-5.773160e-15 loss=-4.6244e-03
+iter=049 mean_E=-2.1935649383 best_err=-5.773160e-15 loss=-7.0926e-03
+iter=050 mean_E=-2.1935563618 best_err=-5.773160e-15 loss=-8.5077e-03
+iter=051 mean_E=-2.1913235694 best_err=-5.773160e-15 loss=-3.5559e-03
+iter=052 mean_E=-2.1927740834 best_err=-5.773160e-15 loss=-4.3828e-04
+iter=053 mean_E=-2.1931855770 best_err=-5.773160e-15 loss=3.6760e-03
+iter=054 mean_E=-2.1921681758 best_err=-5.773160e-15 loss=2.0665e-03
+iter=055 mean_E=-2.1919861227 best_err=-5.773160e-15 loss=-3.5599e-03
+iter=056 mean_E=-2.1937181559 best_err=-5.773160e-15 loss=-5.6958e-03
+iter=057 mean_E=-2.1934368178 best_err=-5.773160e-15 loss=-7.5161e-03
+iter=058 mean_E=-2.1914398941 best_err=-5.773160e-15 loss=-3.7764e-03
+iter=059 mean_E=-2.1940883397 best_err=-5.773160e-15 loss=-2.8016e-03
+iter=060 mean_E=-2.1937252764 best_err=-5.773160e-15 loss=-3.8636e-03
+iter=061 mean_E=-2.1927473691 best_err=-5.773160e-15 loss=-5.1465e-03
+iter=062 mean_E=-2.1925021187 best_err=-5.773160e-15 loss=4.6371e-04
+iter=063 mean_E=-2.1902768378 best_err=-5.773160e-15 loss=-4.1919e-03
+iter=064 mean_E=-2.1906876877 best_err=-5.773160e-15 loss=1.1089e-03
+iter=065 mean_E=-2.1940834007 best_err=-5.773160e-15 loss=4.4025e-03
+iter=066 mean_E=-2.1936245619 best_err=-5.773160e-15 loss=-4.1553e-03
+iter=067 mean_E=-2.1903893692 best_err=-5.773160e-15 loss=-5.4754e-03
+iter=068 mean_E=-2.1944006454 best_err=-5.773160e-15 loss=5.3346e-03
+iter=069 mean_E=-2.1930264469 best_err=-5.773160e-15 loss=-4.2651e-04
+iter=070 mean_E=-2.1935279295 best_err=-5.773160e-15 loss=-1.0282e-03
+iter=071 mean_E=-2.1934597853 best_err=-5.773160e-15 loss=-1.9749e-04
+iter=072 mean_E=-2.1920866893 best_err=-5.773160e-15 loss=1.1172e-03
+iter=073 mean_E=-2.1899072114 best_err=-5.773160e-15 loss=-5.5767e-03
+iter=074 mean_E=-2.1933939650 best_err=-5.773160e-15 loss=-9.9645e-04
+iter=075 mean_E=-2.1937163614 best_err=-5.773160e-15 loss=-3.2013e-03
+iter=076 mean_E=-2.1914401129 best_err=-5.773160e-15 loss=-7.2963e-04
+iter=077 mean_E=-2.1922133830 best_err=-5.773160e-15 loss=-1.8472e-03
+iter=078 mean_E=-2.1941122816 best_err=-5.773160e-15 loss=-3.1227e-03
+iter=079 mean_E=-2.1915936001 best_err=-5.773160e-15 loss=-1.1874e-03
+iter=080 mean_E=-2.1915033958 best_err=-5.773160e-15 loss=-1.5733e-03
+iter=081 mean_E=-2.1901524168 best_err=-5.773160e-15 loss=-1.6524e-03
+iter=082 mean_E=-2.1943915786 best_err=-5.773160e-15 loss=4.2838e-03
+iter=083 mean_E=-2.1941801596 best_err=-5.773160e-15 loss=3.8578e-03
+iter=084 mean_E=-2.1926119337 best_err=-5.773160e-15 loss=-1.1435e-03
+iter=085 mean_E=-2.1928688023 best_err=-5.773160e-15 loss=-1.4750e-03
+iter=086 mean_E=-2.1940604095 best_err=-5.773160e-15 loss=-3.1849e-03
+iter=087 mean_E=-2.1914057603 best_err=-5.773160e-15 loss=-5.7774e-03
+iter=088 mean_E=-2.1939394557 best_err=-5.773160e-15 loss=-5.2509e-03
+iter=089 mean_E=-2.1938683991 best_err=-5.773160e-15 loss=-4.5167e-03
+iter=090 mean_E=-2.1929049184 best_err=-5.773160e-15 loss=-2.3261e-03
+iter=091 mean_E=-2.1917589631 best_err=-5.773160e-15 loss=-4.2193e-03
+iter=092 mean_E=-2.1943985372 best_err=-5.773160e-15 loss=5.3831e-03
+iter=093 mean_E=-2.1934170588 best_err=-5.773160e-15 loss=-8.8168e-03
+iter=094 mean_E=-2.1940141857 best_err=-5.773160e-15 loss=1.7337e-03
+iter=095 mean_E=-2.1924117012 best_err=-5.773160e-15 loss=-5.0002e-03
+iter=096 mean_E=-2.1935111940 best_err=-5.773160e-15 loss=-4.2258e-03
+iter=097 mean_E=-2.1938255701 best_err=-5.773160e-15 loss=-9.3937e-03
+iter=098 mean_E=-2.1916804901 best_err=-5.773160e-15 loss=-2.4183e-03
+iter=099 mean_E=-2.1934189635 best_err=-5.773160e-15 loss=-1.0482e-03
+{
+  "energy": -2.1951805499916257,
+  "error": -5.773159728050814e-15,
+  "sequence": [
+    1,
+    19,
+    24,
+    21,
+    15,
+    23,
+    12,
+    26,
+    8,
+    25,
+    26,
+    10,
+    6,
+    10,
+    13,
+    11,
+    15,
+    25,
+    22,
+    8
+  ],
+  "iteration": 46,
+  "gate_count": {
+    "x": 4,
+    "rx": 528,
+    "h": 528,
+    "cx": 1268,
+    "rz": 136,
+    "total": 2464,
+    "two_qubit": 1268
+  }
+}
