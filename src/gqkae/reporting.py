@@ -39,8 +39,9 @@ def format_report(summary: dict) -> str:
         lines.append(f"Best CASCI err:  {best.get('error', float('nan')):.6e} Ha")
         gate = best.get("gate_count", {}) or {}
         two_qubit = gate.get("two_qubit", gate.get("cx", "n/a"))
-        label = "CUDA-Q gates" if "cx" in gate or "rz" in gate else "Approx gates"
-        lines.append(f"{label}:    two-qubit={two_qubit}, total={gate.get('total', 'n/a')}")
+        lines.append(
+            f"Paper-style gates: two-qubit={two_qubit}, total={gate.get('total', 'n/a')}"
+        )
     if final:
         err = final.get("final_batch_best_error")
         if err is not None:

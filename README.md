@@ -35,4 +35,7 @@ uv run python scripts/evaluate_mvp.py --run-dir runs/h4_cudaq_smoke
 uv run python scripts/train_mvp.py --config configs/h4_cudaq_paper_like.yaml
 ```
 
+
+Resource reporting uses the paper-style all-to-all Pauli-evolution count convention: arbitrary `rz` rotations, `cx` ladders, and `h`/`s`/`sdg` Clifford basis changes, with HF-reference `x` gates reported separately.
+
 Chemical accuracy target: `|E_GQKAE - E_CASCI| <= 0.0016 Ha`.

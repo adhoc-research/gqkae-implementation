@@ -15,4 +15,16 @@ def test_h4_pool_and_cudaq_source():
     source = sequence_to_cudaq_source([0, 1, 9], pool, basis)
     assert "@cudaq.kernel" in source.source
     assert "cudaq.qvector(8)" in source.source
-    assert source.gate_count["total"] > 0
+    assert source.gate_count == {
+        "x": 4,
+        "h": 72,
+        "s": 18,
+        "sdg": 18,
+        "rz": 10,
+        "cx": 56,
+        "two_qubit": 56,
+        "total": 178,
+    }
+    assert "sdg(q[" in source.source
+    assert "s(q[" in source.source
+    assert "ry(" not in source.source

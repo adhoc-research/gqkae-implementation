@@ -2,31 +2,31 @@
   {
     "iteration": 0,
     "energies": [
-      -2.1914493989791937,
-      -2.190212248503456
+      -2.1852245180364562,
+      -2.190703217713951
     ],
-    "mean_energy": -2.190830823741325,
-    "best_batch_energy": -2.1914493989791937,
-    "best_so_far_energy": -2.1914493989791937,
-    "best_so_far_error": 0.0037311510124320435,
+    "mean_energy": -2.1879638678752036,
+    "best_batch_energy": -2.190703217713951,
+    "best_so_far_energy": -2.190703217713951,
+    "best_so_far_error": 0.004477332277676549,
     "mean_subspace_dimension": 20.0,
-    "mean_loss": -0.01163311768323183,
-    "mean_total_gates": 2194.0,
-    "mean_two_qubit_gates": 0.0
+    "mean_loss": 0.011480475775897503,
+    "mean_total_gates": 2674.0,
+    "mean_two_qubit_gates": 1106.0
   },
   {
     "iteration": 1,
     "energies": [
-      -2.189319814343896,
-      -2.1832758999645447
+      -2.1901601954959196,
+      -2.183759282356138
     ],
-    "mean_energy": -2.18629785715422,
-    "best_batch_energy": -2.189319814343896,
-    "best_so_far_energy": -2.1914493989791937,
-    "best_so_far_error": 0.0037311510124320435,
+    "mean_energy": -2.1869597389260287,
+    "best_batch_energy": -2.1901601954959196,
+    "best_so_far_energy": -2.190703217713951,
+    "best_so_far_error": 0.004477332277676549,
     "mean_subspace_dimension": 20.0,
-    "mean_loss": -0.009591953828930855,
-    "mean_total_gates": 2196.0,
-    "mean_two_qubit_gates": 0.0
+    "mean_loss": -0.009601172991096973,
+    "mean_total_gates": 2676.0,
+    "mean_two_qubit_gates": 1108.0
   }
 ]

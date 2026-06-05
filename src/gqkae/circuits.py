@@ -12,7 +12,9 @@ from dataclasses import dataclass
 import numpy as np
 
 from .chemistry import DeterminantBasis
-from .operator_pool import ExcitationOperator, OperatorPool, approximate_gate_count
+from .fermion_mapping import excitation_pauli_terms
+from .gate_counting import paper_style_sequence_gate_count
+from .operator_pool import ExcitationOperator, OperatorPool
 
 
 @dataclass(frozen=True)
@@ -159,13 +161,12 @@ def sequence_to_cudaq_source(
     pool: OperatorPool,
     basis: DeterminantBasis,
 ) -> CudaQCircuitSource:
-    """Convert an operator sequence into a CUDA-Q Python kernel source string.
+    """Convert an operator sequence into exact paper-style CUDA-Q source.
 
-    The MVP source is meant for paper-fidelity integration/inspection. It initializes
-    the HF determinant and emits a compact gate block per discrete excitation token. The
-    determinant-space simulator remains the scientifically validated active-space path in
-    this repository; replacing these approximate blocks with a backend-specific exact
-    fermionic-excitation decomposition is the next CUDA-Q production step.
+    The generated source initializes the HF determinant and expands each UCCSD token into
+    Jordan-Wigner Pauli evolutions using the paper/cited-repo all-to-all decomposition:
+    Clifford basis changes, a CX ladder/uncompute, and one arbitrary ``rz`` per Pauli
+    word.
     """
     lines = [
         "import cudaq",
@@ -177,32 +178,45 @@ def sequence_to_cudaq_source(
     hf_occ = [i for i, bit in enumerate(basis.hf_bitstring) if bit == "1"]
     for qubit in hf_occ:
         lines.append(f"    x(q[{qubit}])")
+
     for token in sequence:
         op = pool[int(token)]
-        if op.is_noop:
+        terms = excitation_pauli_terms(op, basis.n_qubits)
+        if not terms:
             continue
-        involved = list(op.annihilate + op.create)
-        if op.rank == 1:
-            src, dst = op.annihilate[0], op.create[0]
-            lines.extend(
-                [
-                    f"    # {op.name}",
-                    f"    cx(q[{src}], q[{dst}])",
-                    f"    ry({2 * op.angle:.17g}, q[{dst}])",
-                    f"    cx(q[{src}], q[{dst}])",
-                ]
-            )
-        else:
-            target = involved[-1]
-            controls = involved[:-1]
-            lines.append(f"    # {op.name}")
-            for q in controls:
+        lines.append(f"    # token {int(token)}: {op.name}")
+        for term in terms:
+            active = [i for i, pauli in enumerate(term.word) if pauli != "I"]
+            if not active or abs(term.coefficient) <= 1e-15:
+                continue
+            word = "".join(term.word)
+            angle = 2.0 * op.angle * term.coefficient
+            lines.append(f"    # exp Pauli {word}, coeff={term.coefficient:.17g}")
+            for q in active:
+                pauli = term.word[q]
+                if pauli == "X":
+                    lines.append(f"    h(q[{q}])")
+                elif pauli == "Y":
+                    lines.append(f"    sdg(q[{q}])")
+                    lines.append(f"    h(q[{q}])")
+            target = active[-1]
+            for q in active[:-1]:
                 lines.append(f"    cx(q[{q}], q[{target}])")
-            lines.append(f"    rz({2 * op.angle:.17g}, q[{target}])")
-            for q in reversed(controls):
+            lines.append(f"    rz({angle:.17g}, q[{target}])")
+            for q in reversed(active[:-1]):
                 lines.append(f"    cx(q[{q}], q[{target}])")
+            for q in reversed(active):
+                pauli = term.word[q]
+                if pauli == "X":
+                    lines.append(f"    h(q[{q}])")
+                elif pauli == "Y":
+                    lines.append(f"    h(q[{q}])")
+                    lines.append(f"    s(q[{q}])")
     lines.append("    mz(q)")
-    return CudaQCircuitSource("\n".join(lines) + "\n", approximate_gate_count(sequence, pool))
+    return CudaQCircuitSource(
+        "\n".join(lines) + "\n",
+        paper_style_sequence_gate_count(sequence, pool, basis),
+    )
 
 
 def sample_sequence_circuit(
@@ -237,7 +251,7 @@ def sample_sequence_circuit(
     return CircuitSampleResult(
         counts=counts,
         probabilities=probabilities,
-        gate_count=approximate_gate_count(sequence, pool),
+        gate_count=paper_style_sequence_gate_count(sequence, pool, basis),
         backend="determinant",
     )
 

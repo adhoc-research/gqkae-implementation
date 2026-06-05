@@ -13,6 +13,7 @@ import numpy as np
 
 from .chemistry import DeterminantBasis
 from .fermion_mapping import PauliTerm, excitation_pauli_terms
+from .gate_counting import paper_style_sequence_gate_count
 from .operator_pool import OperatorPool
 
 
@@ -61,6 +62,22 @@ def _rz(kernel, angle: float, qubit) -> None:
     kernel.rz(float(angle), qubit)
 
 
+def _s(kernel, qubit) -> None:
+    gate = getattr(kernel, "s", None)
+    if callable(gate):
+        gate(qubit)
+    else:  # pragma: no cover - depends on CUDA-Q builder version
+        _rz(kernel, pi / 2, qubit)
+
+
+def _sdg(kernel, qubit) -> None:
+    gate = getattr(kernel, "sdg", None)
+    if callable(gate):
+        gate(qubit)
+    else:  # pragma: no cover - depends on CUDA-Q builder version
+        _rz(kernel, -pi / 2, qubit)
+
+
 def _cx(kernel, control, target) -> None:
     kernel.cx(control, target)
 
@@ -73,14 +90,18 @@ def _apply_basis_change(kernel, qubit, pauli: str) -> None:
     if pauli == "X":
         _h(kernel, qubit)
     elif pauli == "Y":
-        _rx(kernel, -pi / 2, qubit)
+        # Paper/cited-repo Clifford convention for Y basis: S† then H.
+        _sdg(kernel, qubit)
+        _h(kernel, qubit)
 
 
 def _undo_basis_change(kernel, qubit, pauli: str) -> None:
     if pauli == "X":
         _h(kernel, qubit)
     elif pauli == "Y":
-        _rx(kernel, pi / 2, qubit)
+        # Undo H S† as H then S.
+        _h(kernel, qubit)
+        _s(kernel, qubit)
 
 
 def apply_pauli_exponential(kernel, qubits, term: PauliTerm, theta: float) -> None:
@@ -191,6 +212,14 @@ def estimate_cudaq_resources(
     pool: OperatorPool,
     basis: DeterminantBasis,
 ) -> dict[str, int | float | dict]:
+    """Return paper-style static counts with backend estimate metadata if available."""
     cudaq = _import_cudaq()
     kernel = build_cudaq_kernel(sequence, pool, basis)
-    return _resources_to_dict(cudaq.estimate_resources(kernel))
+    paper_counts: dict[str, int | float | dict] = paper_style_sequence_gate_count(sequence, pool, basis)
+    try:
+        backend_resources = _resources_to_dict(cudaq.estimate_resources(kernel))
+    except Exception as exc:  # pragma: no cover - backend/version dependent
+        paper_counts["cudaq_estimate_error"] = str(exc)
+    else:
+        paper_counts["cudaq_estimate"] = backend_resources
+    return paper_counts

@@ -22,3 +22,7 @@ def test_cudaq_backend_hf_sampling_if_available():
     assert sum(result.counts.values()) == 20
     assert basis.hf_bitstring in result.counts
     assert result.resources
+    assert result.resources["x"] == 4
+    assert result.resources["cx"] == 0
+    assert result.resources["two_qubit"] == 0
+    assert result.resources["total"] == 4

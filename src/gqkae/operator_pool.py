@@ -5,8 +5,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from itertools import combinations, product
 
-import numpy as np
-
 from .chemistry import DeterminantBasis
 from .config import OperatorPoolConfig
 
@@ -98,26 +96,3 @@ def build_h4_uccsd_pool(
     return OperatorPool(tuple(ops), sequence_length=int(config.sequence_length))
 
 
-def approximate_gate_count_for_operator(op: ExcitationOperator) -> tuple[int, int]:
-    """Return rough (two_qubit, total) counts for reporting.
-
-    The paper reports counts after decomposition; this MVP does not reproduce the exact
-    CUDA-Q decomposition. These conservative estimates keep resource reporting visible.
-    """
-    if op.is_noop:
-        return 0, 0
-    if op.rank == 1:
-        return 2, 8
-    if op.rank == 2:
-        return 8, 28
-    return 12 * op.rank, 40 * op.rank
-
-
-def approximate_gate_count(sequence: list[int] | np.ndarray, pool: OperatorPool) -> dict[str, int]:
-    two = 0
-    total = 0
-    for token in sequence:
-        c2, ct = approximate_gate_count_for_operator(pool[int(token)])
-        two += c2
-        total += ct
-    return {"two_qubit": int(two), "total": int(total)}
