@@ -1,0 +1,146 @@
+{
+  "config": {
+    "experiment": {
+      "name": "h4_gate_match_acceptance",
+      "seed": 1,
+      "output_dir": "runs/h4_gate_match_acceptance_seed1"
+    },
+    "molecule": {
+      "name": "H4",
+      "bond_length_angstrom": 0.88,
+      "basis": "6-31g",
+      "active_electrons": 4,
+      "active_orbitals": 4,
+      "geometry": "linear_chain"
+    },
+    "operator_pool": {
+      "sequence_length": 20,
+      "excitation_angle": 0.7853981633974483,
+      "include_noop": true,
+      "spec": "pauli_evolution",
+      "ccsd_threshold": 1e-06,
+      "remove_z_ladder": true,
+      "only_use_first_pauli": true,
+      "dedupe_pauli_words": true
+    },
+    "qsci": {
+      "shots": 100000,
+      "dmax": 2000,
+      "add_hf_det": true,
+      "backend": "cudaq",
+      "cudaq_target": "qpp-cpu",
+      "cudaq_option": null,
+      "cudaq_reverse_bitstrings": false
+    },
+    "model": {
+      "d_model": 64,
+      "n_layers": 2,
+      "n_heads": 4,
+      "latent_dim": 12,
+      "qkan_layers": 1,
+      "daruan_terms": 4,
+      "dropout": 0.0
+    },
+    "training": {
+      "iterations": 100,
+      "batch_circuits": 10,
+      "policy_updates": 30,
+      "learning_rate": 5e-06,
+      "weight_decay": 0.01,
+      "grpo_clip": 0.2,
+      "repetition_penalty": 1.2,
+      "temperature": 1.0,
+      "device": "cpu"
+    }
+  },
+  "references": {
+    "hf_energy": -2.174799879875691,
+    "casci_energy": -2.195180549991623,
+    "n_qubits": 8,
+    "n_determinants": 36
+  },
+  "operator_pool": {
+    "vocab_size": 27,
+    "sequence_length": 20,
+    "spec": "pauli_evolution",
+    "config": {
+      "sequence_length": 20,
+      "excitation_angle": 0.7853981633974483,
+      "include_noop": true,
+      "spec": "pauli_evolution",
+      "ccsd_threshold": 1e-06,
+      "remove_z_ladder": true,
+      "only_use_first_pauli": true,
+      "dedupe_pauli_words": true
+    }
+  },
+  "model": {
+    "parameters": 47805,
+    "parameter_memory_mb": 0.18236160278320312
+  },
+  "best": {
+    "energy": -2.195180549991629,
+    "error": -5.773159728050814e-15,
+    "sequence": [
+      4,
+      17,
+      23,
+      6,
+      4,
+      21,
+      15,
+      18,
+      3,
+      2,
+      14,
+      10,
+      13,
+      11,
+      23,
+      6,
+      15,
+      25,
+      5,
+      22
+    ],
+    "iteration": 69,
+    "gate_count": {
+      "x": 4,
+      "h": 132,
+      "s": 20,
+      "sdg": 20,
+      "rz": 20,
+      "cx": 92,
+      "two_qubit": 92,
+      "total": 288,
+      "cudaq_estimate": {
+        "x": 4,
+        "sdg": 20,
+        "h": 132,
+        "cx": 92,
+        "rz": 20,
+        "s": 20,
+        "total": 288,
+        "two_qubit": 92
+      }
+    },
+    "sequence_composition": {
+      "noop": 0,
+      "single": 0,
+      "double": 0,
+      "pauli_evolution": 20,
+      "other": 0
+    },
+    "paper_table_i_delta": {
+      "two_qubit_vs_h4_gqkae_mean": -8.0,
+      "total_vs_h4_gqkae_mean": -26.0
+    }
+  },
+  "final": {
+    "iteration": 99,
+    "mean_energy": -2.1949340756064575,
+    "best_batch_energy": -2.195180549991627,
+    "best_so_far_error": -5.773159728050814e-15,
+    "final_batch_best_error": -3.9968028886505635e-15
+  }
+}

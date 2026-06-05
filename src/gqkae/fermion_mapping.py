@@ -108,7 +108,10 @@ def excitation_ladder_ops(op: ExcitationOperator) -> tuple[tuple[int, bool], ...
 
 
 def excitation_pauli_terms(op: ExcitationOperator, n_qubits: int) -> tuple[PauliTerm, ...]:
-    """Return Hermitian H = i(T - T^†) as real Pauli terms."""
+    """Return Pauli terms for an excitation or explicit Pauli-evolution token."""
+    explicit_terms = getattr(op, "pauli_terms", ())
+    if explicit_terms:
+        return tuple(PauliTerm(float(coeff), tuple(word)) for coeff, word in explicit_terms)
     if op.is_noop:
         return ()
     ladder = excitation_ladder_ops(op)

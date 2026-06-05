@@ -1,0 +1,186 @@
+{
+  "paper_table_i_h4_gqkae": {
+    "two_qubit_mean": 100.0,
+    "two_qubit_std": 3.7,
+    "total_mean": 314.0,
+    "total_std": 15.0
+  },
+  "n_runs": 10,
+  "energy_error": {
+    "mean": -5.684341886080802e-15,
+    "std": 1.6721464209063842e-15,
+    "n": 10
+  },
+  "two_qubit": {
+    "mean": 91.4,
+    "std": 10.415799963943666,
+    "n": 10
+  },
+  "total": {
+    "mean": 281.3,
+    "std": 26.8661290268786,
+    "n": 10
+  },
+  "runs": [
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed0",
+      "seed": 0,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -3.9968028886505635e-15,
+      "two_qubit": 112,
+      "total": 328,
+      "composition": {
+        "noop": 0,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 20,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed1",
+      "seed": 1,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -5.773159728050814e-15,
+      "two_qubit": 92,
+      "total": 288,
+      "composition": {
+        "noop": 0,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 20,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed2",
+      "seed": 2,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -6.661338147750939e-15,
+      "two_qubit": 86,
+      "total": 271,
+      "composition": {
+        "noop": 1,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 19,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed3",
+      "seed": 3,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -6.661338147750939e-15,
+      "two_qubit": 70,
+      "total": 219,
+      "composition": {
+        "noop": 5,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 15,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed4",
+      "seed": 4,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -2.220446049250313e-15,
+      "two_qubit": 92,
+      "total": 278,
+      "composition": {
+        "noop": 2,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 18,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed5",
+      "seed": 5,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -6.661338147750939e-15,
+      "two_qubit": 92,
+      "total": 288,
+      "composition": {
+        "noop": 0,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 20,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed6",
+      "seed": 6,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -6.217248937900877e-15,
+      "two_qubit": 94,
+      "total": 287,
+      "composition": {
+        "noop": 1,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 19,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed7",
+      "seed": 7,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -6.217248937900877e-15,
+      "two_qubit": 90,
+      "total": 279,
+      "composition": {
+        "noop": 1,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 19,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed8",
+      "seed": 8,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -4.440892098500626e-15,
+      "two_qubit": 98,
+      "total": 295,
+      "composition": {
+        "noop": 1,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 19,
+        "other": 0
+      }
+    },
+    {
+      "run_dir": "runs/h4_gate_match_acceptance_seed9",
+      "seed": 9,
+      "spec": "pauli_evolution",
+      "vocab_size": 27,
+      "energy_error": -7.993605777301127e-15,
+      "two_qubit": 88,
+      "total": 280,
+      "composition": {
+        "noop": 0,
+        "single": 0,
+        "double": 0,
+        "pauli_evolution": 20,
+        "other": 0
+      }
+    }
+  ]
+}

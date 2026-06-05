@@ -31,6 +31,11 @@ class OperatorPoolConfig:
     sequence_length: int = 20
     excitation_angle: float = 0.7853981633974483
     include_noop: bool = True
+    spec: str = "excitation"
+    ccsd_threshold: float = 1e-6
+    remove_z_ladder: bool = False
+    only_use_first_pauli: bool = False
+    dedupe_pauli_words: bool = True
 
 
 @dataclass(slots=True)

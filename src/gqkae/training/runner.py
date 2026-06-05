@@ -37,6 +37,32 @@ def set_seed(seed: int) -> np.random.Generator:
     return np.random.default_rng(seed)
 
 
+def _sequence_composition(sequence: list[int] | None, pool) -> dict[str, int]:
+    if sequence is None:
+        return {}
+    out = {"noop": 0, "single": 0, "double": 0, "pauli_evolution": 0, "other": 0}
+    for token in sequence:
+        op = pool[int(token)]
+        if op.kind == "pauli_evolution":
+            out["pauli_evolution"] += 1
+        elif op.is_noop:
+            out["noop"] += 1
+        elif op.rank == 1:
+            out["single"] += 1
+        elif op.rank == 2:
+            out["double"] += 1
+        else:
+            out["other"] += 1
+    return out
+
+
+def _paper_table_delta(gate_count: dict[str, Any]) -> dict[str, float]:
+    return {
+        "two_qubit_vs_h4_gqkae_mean": float(gate_count.get("two_qubit", 0) - 100.0),
+        "total_vs_h4_gqkae_mean": float(gate_count.get("total", 0) - 314.0),
+    }
+
+
 def train(config: Config) -> dict[str, Any]:
     torch = _require_torch()
     from ..models.hqkansformer import HQKANsformerPolicy, count_parameters, parameter_memory_mb
@@ -163,12 +189,18 @@ def train(config: Config) -> dict[str, Any]:
         "operator_pool": {
             "vocab_size": pool.vocab_size,
             "sequence_length": pool.sequence_length,
+            "spec": pool.spec,
+            "config": as_dict(config.operator_pool),
         },
         "model": {
             "parameters": count_parameters(model),
             "parameter_memory_mb": parameter_memory_mb(model),
         },
-        "best": best,
+        "best": {
+            **best,
+            "sequence_composition": _sequence_composition(best.get("sequence"), pool),
+            "paper_table_i_delta": _paper_table_delta(best.get("gate_count", {}) or {}),
+        },
         "final": {
             "iteration": final_entry.get("iteration", -1),
             "mean_energy": final_entry.get("mean_energy"),
