@@ -1,0 +1,514 @@
+{
+  "config": {
+    "experiment": {
+      "name": "h4_paper_fidelity_cudaq_nvidia",
+      "seed": 0,
+      "output_dir": "runs/h4_pes_cudaq_nvidia_R0p90_seed0"
+    },
+    "molecule": {
+      "name": "H4",
+      "bond_length_angstrom": 0.9,
+      "basis": "6-31g",
+      "active_electrons": 4,
+      "active_orbitals": 4,
+      "geometry": "linear_chain",
+      "spin_orbital_ordering": "interleaved"
+    },
+    "operator_pool": {
+      "sequence_length": 20,
+      "excitation_angle": 0.7853981633974483,
+      "include_noop": true,
+      "spec": "paper_pauli_evolution",
+      "params": null,
+      "ccsd_threshold": 1e-06,
+      "remove_z_ladder": true,
+      "only_use_first_pauli": true,
+      "dedupe_pauli_words": true
+    },
+    "qsci": {
+      "shots": 100000,
+      "dmax": 2000,
+      "add_hf_det": true,
+      "enlarge_method": "symmetry_completion",
+      "backend": "cudaq",
+      "cudaq_target": "nvidia",
+      "cudaq_option": null,
+      "cudaq_reverse_bitstrings": false
+    },
+    "model": {
+      "d_model": 64,
+      "n_layers": 2,
+      "n_heads": 4,
+      "latent_dim": 12,
+      "qkan_layers": 1,
+      "daruan_terms": 4,
+      "dropout": 0.0
+    },
+    "training": {
+      "iterations": 100,
+      "batch_circuits": 10,
+      "policy_updates": 30,
+      "learning_rate": 5e-06,
+      "weight_decay": 0.01,
+      "grpo_clip": 0.2,
+      "repetition_penalty": 1.2,
+      "temperature": 1.0,
+      "device": "cpu"
+    }
+  },
+  "metadata": {
+    "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+    "method_variant": "paper_pauli_evolution",
+    "pool_sha256": "61ecd199db3bb9feb215712b1529b222dcc10ec32bd559df94195d5192e24198",
+    "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported",
+    "detailed_timing": false
+  },
+  "references": {
+    "hf_energy": -2.17415582482726,
+    "casci_energy": -2.195712227345004,
+    "ccsd_energy": -2.1956802756780083,
+    "n_qubits": 8,
+    "n_determinants": 36
+  },
+  "operator_pool": {
+    "vocab_size": 21,
+    "sequence_length": 20,
+    "spec": "paper_pauli_evolution",
+    "config": {
+      "sequence_length": 20,
+      "excitation_angle": 0.7853981633974483,
+      "include_noop": true,
+      "spec": "paper_pauli_evolution",
+      "params": null,
+      "ccsd_threshold": 1e-06,
+      "remove_z_ladder": true,
+      "only_use_first_pauli": true,
+      "dedupe_pauli_words": true
+    },
+    "sha256": "61ecd199db3bb9feb215712b1529b222dcc10ec32bd559df94195d5192e24198",
+    "operators": [
+      {
+        "token": 0,
+        "name": "identity",
+        "kind": "noop",
+        "angle": 0.0,
+        "annihilate": [],
+        "create": [],
+        "parent": null,
+        "pauli_terms": []
+      },
+      {
+        "token": 1,
+        "name": "paper_P_IIXXYXII__g0_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_0",
+        "pauli_terms": [
+          {
+            "coefficient": -0.25106997271305187,
+            "pauli_word": "IIXXYXII"
+          }
+        ]
+      },
+      {
+        "token": 2,
+        "name": "paper_P_XXIIYXII__g1_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_1",
+        "pauli_terms": [
+          {
+            "coefficient": -0.09074035275334846,
+            "pauli_word": "XXIIYXII"
+          }
+        ]
+      },
+      {
+        "token": 3,
+        "name": "paper_P_IYYIIYXI__g2_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_2",
+        "pauli_terms": [
+          {
+            "coefficient": 0.0808924024628025,
+            "pauli_word": "IYYIIYXI"
+          }
+        ]
+      },
+      {
+        "token": 4,
+        "name": "paper_P_YIYIYIXI__g3_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_3",
+        "pauli_terms": [
+          {
+            "coefficient": 0.05534485403395602,
+            "pauli_word": "YIYIYIXI"
+          }
+        ]
+      },
+      {
+        "token": 5,
+        "name": "paper_P_IYIYIYIX__g4_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_4",
+        "pauli_terms": [
+          {
+            "coefficient": 0.05534485403395602,
+            "pauli_word": "IYIYIYIX"
+          }
+        ]
+      },
+      {
+        "token": 6,
+        "name": "paper_P_XIIXYIIX__g5_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_5",
+        "pauli_terms": [
+          {
+            "coefficient": 0.0808924024628025,
+            "pauli_word": "XIIXYIIX"
+          }
+        ]
+      },
+      {
+        "token": 7,
+        "name": "paper_P_XIXIYIXI__g6_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_6",
+        "pauli_terms": [
+          {
+            "coefficient": 0.05534485403395602,
+            "pauli_word": "XIXIYIXI"
+          }
+        ]
+      },
+      {
+        "token": 8,
+        "name": "paper_P_IXIXIYIX__g7_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_7",
+        "pauli_terms": [
+          {
+            "coefficient": 0.05534485403395602,
+            "pauli_word": "IXIXIYIX"
+          }
+        ]
+      },
+      {
+        "token": 9,
+        "name": "paper_P_IIXXIIYX__g8_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_8",
+        "pauli_terms": [
+          {
+            "coefficient": -0.05848056017219953,
+            "pauli_word": "IIXXIIYX"
+          }
+        ]
+      },
+      {
+        "token": 10,
+        "name": "paper_P_XXIIIIYX__g9_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_9",
+        "pauli_terms": [
+          {
+            "coefficient": -0.043036004450704546,
+            "pauli_word": "XXIIIIYX"
+          }
+        ]
+      },
+      {
+        "token": 11,
+        "name": "paper_P_IIYIIIXI__g10_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_10",
+        "pauli_terms": [
+          {
+            "coefficient": -0.03381247138587027,
+            "pauli_word": "IIYIIIXI"
+          }
+        ]
+      },
+      {
+        "token": 12,
+        "name": "paper_P_IIIYIIIX__g11_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_11",
+        "pauli_terms": [
+          {
+            "coefficient": -0.03381247138587027,
+            "pauli_word": "IIIYIIIX"
+          }
+        ]
+      },
+      {
+        "token": 13,
+        "name": "paper_P_IYYIYIIX__g12_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_12",
+        "pauli_terms": [
+          {
+            "coefficient": 0.025547548428846486,
+            "pauli_word": "IYYIYIIX"
+          }
+        ]
+      },
+      {
+        "token": 14,
+        "name": "paper_P_YIXIXIXI__g13_p1",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_13",
+        "pauli_terms": [
+          {
+            "coefficient": -0.05534485403395602,
+            "pauli_word": "YIXIXIXI"
+          }
+        ]
+      },
+      {
+        "token": 15,
+        "name": "paper_P_IYIXIXIX__g14_p1",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_14",
+        "pauli_terms": [
+          {
+            "coefficient": -0.05534485403395602,
+            "pauli_word": "IYIXIXIX"
+          }
+        ]
+      },
+      {
+        "token": 16,
+        "name": "paper_P_XIIXIYXI__g15_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_15",
+        "pauli_terms": [
+          {
+            "coefficient": 0.025547548428846486,
+            "pauli_word": "XIIXIYXI"
+          }
+        ]
+      },
+      {
+        "token": 17,
+        "name": "paper_P_YIXIYIYI__g16_p1",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_16",
+        "pauli_terms": [
+          {
+            "coefficient": -0.05534485403395602,
+            "pauli_word": "YIXIYIYI"
+          }
+        ]
+      },
+      {
+        "token": 18,
+        "name": "paper_P_IYIXIYIY__g17_p1",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_17",
+        "pauli_terms": [
+          {
+            "coefficient": -0.05534485403395602,
+            "pauli_word": "IYIXIYIY"
+          }
+        ]
+      },
+      {
+        "token": 19,
+        "name": "paper_P_YIIIXIII__g18_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_18",
+        "pauli_terms": [
+          {
+            "coefficient": -0.010255448627689161,
+            "pauli_word": "YIIIXIII"
+          }
+        ]
+      },
+      {
+        "token": 20,
+        "name": "paper_P_IYIIIXII__g19_p0",
+        "kind": "pauli_evolution",
+        "angle": 1.0,
+        "annihilate": [],
+        "create": [],
+        "parent": "tequila_gate_19",
+        "pauli_terms": [
+          {
+            "coefficient": -0.010255448627689161,
+            "pauli_word": "IYIIIXII"
+          }
+        ]
+      }
+    ]
+  },
+  "model": {
+    "parameters": 47031,
+    "parameter_memory_mb": 0.17940902709960938
+  },
+  "best": {
+    "energy": -2.1957122273450076,
+    "error": -3.552713678800501e-15,
+    "sequence": [
+      15,
+      15,
+      9,
+      18,
+      17,
+      3,
+      7,
+      17,
+      15,
+      11,
+      1,
+      15,
+      19,
+      2,
+      6,
+      8,
+      17,
+      0,
+      19,
+      14
+    ],
+    "iteration": 8,
+    "gate_count": {
+      "x": 4,
+      "h": 140,
+      "s": 29,
+      "sdg": 29,
+      "rz": 19,
+      "cx": 102,
+      "two_qubit": 102,
+      "total": 323,
+      "cudaq_estimate": {
+        "x": 4,
+        "sdg": 29,
+        "h": 140,
+        "cx": 102,
+        "rz": 19,
+        "s": 29,
+        "total": 323,
+        "two_qubit": 102
+      }
+    },
+    "sequence_composition": {
+      "noop": 1,
+      "single": 0,
+      "double": 0,
+      "pauli_evolution": 19,
+      "other": 0
+    },
+    "paper_table_i_count_view": {
+      "two_qubit": 102.0,
+      "total_excluding_hf_x": 319.0,
+      "total_including_hf_x": 323.0,
+      "hf_x": 4.0
+    },
+    "paper_table_i_delta": {
+      "two_qubit_vs_h4_gqkae_mean": 2.0,
+      "total_excluding_hf_x_vs_h4_gqkae_mean": 5.0,
+      "total_including_hf_x_vs_h4_gqkae_mean": 9.0
+    }
+  },
+  "timing_s": {
+    "setup": 0.18245573702733964,
+    "training_total": 281.33050058499794,
+    "iteration_total": {
+      "count": 100.0,
+      "total_s": 280.12267019599676,
+      "mean_s": 2.8012267019599677,
+      "std_s": 0.3303609514588063,
+      "min_s": 2.4894437770126387,
+      "max_s": 5.4808357099827845
+    },
+    "generation_total": {
+      "count": 100.0,
+      "total_s": 3.7584014540479984,
+      "mean_s": 0.037584014540479986,
+      "std_s": 0.013794685520980563,
+      "min_s": 0.02704095997614786,
+      "max_s": 0.14808132898178883
+    },
+    "evaluation_total": {
+      "count": 100.0,
+      "total_s": 244.11324981282814,
+      "mean_s": 2.4411324981282814,
+      "std_s": 0.289838468468115,
+      "min_s": 2.1028155160020106,
+      "max_s": 4.958985934994416
+    },
+    "optimization_total": {
+      "count": 100.0,
+      "total_s": 32.18848815394449,
+      "mean_s": 0.3218848815394449,
+      "std_s": 0.07556585791617902,
+      "min_s": 0.23507880000397563,
+      "max_s": 1.0030077960109338
+    }
+  },
+  "final": {
+    "iteration": 99,
+    "mean_energy": -2.1939308051752042,
+    "best_batch_energy": -2.195712227345006,
+    "best_so_far_error": -3.552713678800501e-15,
+    "final_batch_best_error": -1.7763568394002505e-15
+  }
+}

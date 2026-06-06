@@ -26,6 +26,7 @@ class DeterminantBasis:
     bitstrings: tuple[str, ...]
     index_by_bitstring: dict[str, int]
     hf_bitstring: str
+    spin_orbital_ordering: str = "alpha_beta"
 
     @property
     def n_qubits(self) -> int:
@@ -46,25 +47,89 @@ def _bits_from_int(value: int, n_bits: int) -> list[int]:
     return [(value >> i) & 1 for i in range(n_bits)]
 
 
-def bitstring_from_alpha_beta(alpha: int, beta: int, n_orbitals: int) -> str:
-    """Encode alpha occupations then beta occupations, qubit-0 first.
+def _validate_spin_orbital_ordering(ordering: str) -> str:
+    normalized = ordering.lower().replace("-", "_")
+    if normalized in {"alpha_beta", "alpha_first", "block", "blocked"}:
+        return "alpha_beta"
+    if normalized in {"interleaved", "abab", "alpha_beta_interleaved"}:
+        return "interleaved"
+    raise ValueError(f"unknown spin_orbital_ordering={ordering!r}")
 
-    This internal convention makes bitstrings easy to map back to PySCF's alpha/beta
-    strings. It is not intended as a hardware endianness convention.
+
+def spin_orbital_to_qubit(spin_orbital: int, n_orbitals: int, ordering: str = "alpha_beta") -> int:
+    """Map a spin-orbital index to a qubit index under the selected ordering.
+
+    Spin-orbital indices use the alpha-block convention: `0..n-1` are alpha and
+    `n..2n-1` are beta. The cited paper/codes use interleaved qubits where
+    alpha_i -> 2*i and beta_i -> 2*i+1.
     """
-    occ = _bits_from_int(alpha, n_orbitals) + _bits_from_int(beta, n_orbitals)
+    ordering = _validate_spin_orbital_ordering(ordering)
+    if ordering == "alpha_beta":
+        return int(spin_orbital)
+    if spin_orbital < n_orbitals:
+        return 2 * int(spin_orbital)
+    return 2 * (int(spin_orbital) - n_orbitals) + 1
+
+
+def qubit_to_spin_orbital(qubit: int, n_orbitals: int, ordering: str = "alpha_beta") -> int:
+    ordering = _validate_spin_orbital_ordering(ordering)
+    if ordering == "alpha_beta":
+        return int(qubit)
+    if qubit % 2 == 0:
+        return int(qubit // 2)
+    return int(n_orbitals + qubit // 2)
+
+
+def bitstring_from_alpha_beta(
+    alpha: int,
+    beta: int,
+    n_orbitals: int,
+    ordering: str = "alpha_beta",
+) -> str:
+    """Encode PySCF alpha/beta occupation integers as a qubit-index bitstring."""
+    ordering = _validate_spin_orbital_ordering(ordering)
+    alpha_bits = _bits_from_int(alpha, n_orbitals)
+    beta_bits = _bits_from_int(beta, n_orbitals)
+    if ordering == "alpha_beta":
+        occ = alpha_bits + beta_bits
+    else:
+        occ = [bit for i in range(n_orbitals) for bit in (alpha_bits[i], beta_bits[i])]
     return "".join(str(bit) for bit in occ)
 
 
-def alpha_beta_from_bitstring(bitstring: str, n_orbitals: int) -> tuple[int, int]:
+def alpha_beta_from_bitstring(
+    bitstring: str,
+    n_orbitals: int,
+    ordering: str = "alpha_beta",
+) -> tuple[int, int]:
+    ordering = _validate_spin_orbital_ordering(ordering)
     if len(bitstring) != 2 * n_orbitals:
         raise ValueError(f"expected {2 * n_orbitals} bits, got {len(bitstring)}")
-    alpha = sum((bitstring[i] == "1") << i for i in range(n_orbitals))
-    beta = sum((bitstring[n_orbitals + i] == "1") << i for i in range(n_orbitals))
+    if ordering == "alpha_beta":
+        alpha = sum((bitstring[i] == "1") << i for i in range(n_orbitals))
+        beta = sum((bitstring[n_orbitals + i] == "1") << i for i in range(n_orbitals))
+    else:
+        alpha = sum((bitstring[2 * i] == "1") << i for i in range(n_orbitals))
+        beta = sum((bitstring[2 * i + 1] == "1") << i for i in range(n_orbitals))
     return alpha, beta
 
 
-def make_determinant_basis(n_orbitals: int, n_alpha: int, n_beta: int) -> DeterminantBasis:
+def bitstring_between_orderings(
+    bitstring: str,
+    n_orbitals: int,
+    source_ordering: str,
+    target_ordering: str,
+) -> str:
+    alpha, beta = alpha_beta_from_bitstring(bitstring, n_orbitals, source_ordering)
+    return bitstring_from_alpha_beta(alpha, beta, n_orbitals, target_ordering)
+
+
+def make_determinant_basis(
+    n_orbitals: int,
+    n_alpha: int,
+    n_beta: int,
+    spin_orbital_ordering: str = "alpha_beta",
+) -> DeterminantBasis:
     try:
         from pyscf.fci import cistring
     except ImportError as exc:  # pragma: no cover - environment dependent
@@ -72,15 +137,16 @@ def make_determinant_basis(n_orbitals: int, n_alpha: int, n_beta: int) -> Determ
 
     alpha_strings = tuple(int(x) for x in cistring.make_strings(range(n_orbitals), n_alpha))
     beta_strings = tuple(int(x) for x in cistring.make_strings(range(n_orbitals), n_beta))
+    ordering = _validate_spin_orbital_ordering(spin_orbital_ordering)
     bitstrings = tuple(
-        bitstring_from_alpha_beta(a, b, n_orbitals)
+        bitstring_from_alpha_beta(a, b, n_orbitals, ordering)
         for a, b in product(alpha_strings, beta_strings)
     )
     index_by_bitstring = {bit: i for i, bit in enumerate(bitstrings)}
 
     hf_alpha = sum(1 << i for i in range(n_alpha))
     hf_beta = sum(1 << i for i in range(n_beta))
-    hf_bitstring = bitstring_from_alpha_beta(hf_alpha, hf_beta, n_orbitals)
+    hf_bitstring = bitstring_from_alpha_beta(hf_alpha, hf_beta, n_orbitals, ordering)
     return DeterminantBasis(
         n_orbitals=n_orbitals,
         n_alpha=n_alpha,
@@ -90,6 +156,7 @@ def make_determinant_basis(n_orbitals: int, n_alpha: int, n_beta: int) -> Determ
         bitstrings=bitstrings,
         index_by_bitstring=index_by_bitstring,
         hf_bitstring=hf_bitstring,
+        spin_orbital_ordering=ordering,
     )
 
 
@@ -103,6 +170,15 @@ class ActiveSpaceProblem:
     eri_active: np.ndarray
     basis: DeterminantBasis
     hamiltonian: np.ndarray
+    active_indices: tuple[int, ...]
+    ccsd_energy: float
+    ccsd_t1: np.ndarray
+    ccsd_t2: np.ndarray
+
+    @property
+    def ccsd_amplitude(self) -> dict[str, np.ndarray]:
+        """Cited-repo-compatible closed-shell CCSD amplitude payload."""
+        return {"t1": self.ccsd_t1, "t2": self.ccsd_t2}
 
     @property
     def n_qubits(self) -> int:
@@ -124,7 +200,7 @@ def build_h4_problem(config: MoleculeConfig | None = None) -> ActiveSpaceProblem
     _validate_h4_config(config)
 
     try:
-        from pyscf import ao2mo, gto, mcscf, scf
+        from pyscf import ao2mo, cc, gto, mcscf, scf
     except ImportError as exc:  # pragma: no cover - environment dependent
         raise RuntimeError(
             "PySCF is required for chemistry setup. Install with `uv sync`."
@@ -145,10 +221,19 @@ def build_h4_problem(config: MoleculeConfig | None = None) -> ActiveSpaceProblem
     mc = mcscf.CASCI(mf, ncas, nelecas)
     mc.kernel(verbose=0)
     h1_active, ecore = mc.get_h1eff()
+    active_indices = tuple(range(mc.ncore, mc.ncore + ncas))
     mo_active = mc.mo_coeff[:, mc.ncore : mc.ncore + ncas]
     eri_active = ao2mo.restore(1, ao2mo.kernel(mol, mo_active), ncas)
 
-    basis = make_determinant_basis(ncas, *nelecas)
+    nmo = mf.mo_coeff.shape[1]
+    active_set = set(active_indices)
+    frozen_orbs = [i for i in range(nmo) if i not in active_set]
+    mycc = cc.RCCSD(mf, frozen=frozen_orbs)
+    mycc.verbose = 0
+    mycc.kernel()
+    ccsd_energy = float(mf.e_tot + mycc.e_corr)
+
+    basis = make_determinant_basis(ncas, *nelecas, spin_orbital_ordering=config.spin_orbital_ordering)
     hamiltonian = build_fci_hamiltonian(h1_active, eri_active, ncas, nelecas, ecore)
     eig0 = float(np.linalg.eigvalsh(hamiltonian)[0])
     # Use explicit Hamiltonian eigenvalue as CASCI reference for exact consistency with QSCI.
@@ -163,6 +248,10 @@ def build_h4_problem(config: MoleculeConfig | None = None) -> ActiveSpaceProblem
         eri_active=np.asarray(eri_active),
         basis=basis,
         hamiltonian=np.asarray(hamiltonian),
+        active_indices=active_indices,
+        ccsd_energy=ccsd_energy,
+        ccsd_t1=np.asarray(mycc.t1),
+        ccsd_t2=np.asarray(mycc.t2),
     )
 
 
@@ -200,6 +289,7 @@ def _validate_h4_config(config: MoleculeConfig) -> None:
         raise ValueError("MVP only supports molecule.name=H4")
     if config.geometry != "linear_chain":
         raise ValueError("MVP only supports molecule.geometry=linear_chain")
+    _validate_spin_orbital_ordering(config.spin_orbital_ordering)
     if config.active_electrons != 4 or config.active_orbitals != 4:
         raise ValueError("MVP only supports H4 CAS(4e,4o)")
     if config.basis.lower() != "6-31g":

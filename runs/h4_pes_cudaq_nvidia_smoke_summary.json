@@ -1,0 +1,361 @@
+{
+  "phase": "exact-cudaq-h4-pes-five-trials",
+  "start_timestamp": "2026-06-06T17:16:22.170773+00:00",
+  "end_timestamp": "2026-06-06T17:16:46.178864+00:00",
+  "elapsed_s": 20.3972088409937,
+  "argv": [
+    "scripts/run_h4_cudaq_pes_five_trials.py",
+    "--config",
+    "configs/h4_paper_fidelity_cudaq_nvidia.yaml",
+    "--bond-grid",
+    "0.88",
+    "--seeds",
+    "0",
+    "--target",
+    "nvidia",
+    "--output-prefix",
+    "runs/h4_pes_cudaq_nvidia_smoke",
+    "--override",
+    "qsci.shots=1000",
+    "--override",
+    "training.iterations=1",
+    "--override",
+    "training.batch_circuits=1",
+    "--override",
+    "training.policy_updates=1",
+    "--detailed-timing",
+    "--skip-existing",
+    "--stop-on-failure"
+  ],
+  "config_path": "configs/h4_paper_fidelity_cudaq_nvidia.yaml",
+  "config": {
+    "experiment": {
+      "name": "h4_paper_fidelity_cudaq_nvidia",
+      "seed": 7,
+      "output_dir": "runs/h4_paper_fidelity_cudaq_nvidia_seed7"
+    },
+    "molecule": {
+      "name": "H4",
+      "bond_length_angstrom": 0.88,
+      "basis": "6-31g",
+      "active_electrons": 4,
+      "active_orbitals": 4,
+      "geometry": "linear_chain",
+      "spin_orbital_ordering": "interleaved"
+    },
+    "operator_pool": {
+      "sequence_length": 20,
+      "excitation_angle": 0.7853981633974483,
+      "include_noop": true,
+      "spec": "paper_pauli_evolution",
+      "params": null,
+      "ccsd_threshold": 1e-06,
+      "remove_z_ladder": true,
+      "only_use_first_pauli": true,
+      "dedupe_pauli_words": true
+    },
+    "qsci": {
+      "shots": 1000,
+      "dmax": 2000,
+      "add_hf_det": true,
+      "enlarge_method": "symmetry_completion",
+      "backend": "cudaq",
+      "cudaq_target": "nvidia",
+      "cudaq_option": null,
+      "cudaq_reverse_bitstrings": false
+    },
+    "model": {
+      "d_model": 64,
+      "n_layers": 2,
+      "n_heads": 4,
+      "latent_dim": 12,
+      "qkan_layers": 1,
+      "daruan_terms": 4,
+      "dropout": 0.0
+    },
+    "training": {
+      "iterations": 1,
+      "batch_circuits": 1,
+      "policy_updates": 1,
+      "learning_rate": 5e-06,
+      "weight_decay": 0.01,
+      "grpo_clip": 0.2,
+      "repetition_penalty": 1.2,
+      "temperature": 1.0,
+      "device": "cpu"
+    }
+  },
+  "cudaq_target": "nvidia",
+  "cudaq_option": null,
+  "diagnostics": {
+    "timestamp_unix": 1780766205.4724545,
+    "platform": {
+      "python": "3.11.13",
+      "system": "Linux",
+      "machine": "x86_64",
+      "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+    },
+    "cudaq_import_error": null,
+    "cudaq_version": "CUDA-Q Version 0.14.2 (https://github.com/NVIDIA/cuda-quantum 91ab3092e76dab8887d1fdf0c99a2478ca90581c)",
+    "has_set_random_seed": true,
+    "nvidia_smi": {
+      "available": true,
+      "gpus": [
+        {
+          "index": "0",
+          "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+          "driver_version": "596.49",
+          "memory_total_mib": "12227"
+        }
+      ],
+      "raw": "0, NVIDIA GeForce RTX 5070 Ti Laptop GPU, 596.49, 12227"
+    },
+    "candidates": [
+      {
+        "label": "qpp-cpu",
+        "target": "qpp-cpu",
+        "option": null,
+        "gpu_candidate": false,
+        "usable": true,
+        "elapsed_s": 0.22897476199432276,
+        "counts": {
+          "00": 55,
+          "11": 45
+        },
+        "resources": {
+          "h": 1,
+          "cx": 1
+        }
+      },
+      {
+        "label": "nvidia",
+        "target": "nvidia",
+        "option": null,
+        "gpu_candidate": true,
+        "usable": true,
+        "elapsed_s": 0.3035121720167808,
+        "counts": {
+          "00": 55,
+          "11": 45
+        },
+        "resources": {
+          "h": 1,
+          "cx": 1
+        }
+      },
+      {
+        "label": "nvidia-fp64",
+        "target": "nvidia",
+        "option": "fp64",
+        "gpu_candidate": true,
+        "usable": true,
+        "elapsed_s": 0.06849640398286283,
+        "counts": {
+          "00": 55,
+          "11": 45
+        },
+        "resources": {
+          "h": 1,
+          "cx": 1
+        }
+      },
+      {
+        "label": "nvidia-fp32",
+        "target": "nvidia",
+        "option": "fp32",
+        "gpu_candidate": true,
+        "usable": true,
+        "elapsed_s": 0.05229413398774341,
+        "counts": {
+          "00": 55,
+          "11": 45
+        },
+        "resources": {
+          "h": 1,
+          "cx": 1
+        }
+      },
+      {
+        "label": "qpp-cuda",
+        "target": "qpp-cuda",
+        "option": null,
+        "gpu_candidate": true,
+        "usable": false,
+        "elapsed_s": 0.0013021880004089326,
+        "error": "Invalid target name (qpp-cuda)."
+      },
+      {
+        "label": "custatevec",
+        "target": "custatevec",
+        "option": null,
+        "gpu_candidate": true,
+        "usable": false,
+        "elapsed_s": 1.628999598324299e-05,
+        "error": "Invalid target name (custatevec)."
+      }
+    ],
+    "selected_gpu": {
+      "label": "nvidia",
+      "target": "nvidia",
+      "option": null
+    }
+  },
+  "grid": [
+    0.88
+  ],
+  "seeds": [
+    0
+  ],
+  "chemical_accuracy_ha": 0.0016,
+  "rows": [
+    {
+      "status": "skipped_existing",
+      "bond_length_angstrom": 0.88,
+      "seed": 0,
+      "run_dir": "runs/h4_pes_cudaq_nvidia_smoke_R0p88_seed0",
+      "backend": "cudaq",
+      "cudaq_target": "nvidia",
+      "cudaq_option": null,
+      "shots": 1000,
+      "iterations": 1,
+      "batch_circuits": 1,
+      "hf_energy": -2.174799879875691,
+      "ccsd_energy": -2.1951462890245423,
+      "casci_energy": -2.195180549991622,
+      "gqkae_energy": -2.1851583616689365,
+      "error_vs_casci": 0.010022188322685643,
+      "abs_error_vs_casci": 0.010022188322685643,
+      "chemical_accuracy": false,
+      "best_iteration": 0,
+      "two_qubit": 106.0,
+      "total_excluding_hf_x": 335.0,
+      "total_including_hf_x": 339.0,
+      "elapsed_s": 31.61321154900361,
+      "train_timing_s": {
+        "setup": 24.87984053901164,
+        "training_total": 31.61321154900361,
+        "iteration_total": {
+          "count": 1.0,
+          "total_s": 0.4734593960165512,
+          "mean_s": 0.4734593960165512,
+          "std_s": 0.0,
+          "min_s": 0.4734593960165512,
+          "max_s": 0.4734593960165512
+        },
+        "generation_total": {
+          "count": 1.0,
+          "total_s": 0.08249893397442065,
+          "mean_s": 0.08249893397442065,
+          "std_s": 0.0,
+          "min_s": 0.08249893397442065,
+          "max_s": 0.08249893397442065
+        },
+        "evaluation_total": {
+          "count": 1.0,
+          "total_s": 0.3508482289907988,
+          "mean_s": 0.3508482289907988,
+          "std_s": 0.0,
+          "min_s": 0.3508482289907988,
+          "max_s": 0.3508482289907988
+        },
+        "optimization_total": {
+          "count": 1.0,
+          "total_s": 0.039654697000514716,
+          "mean_s": 0.039654697000514716,
+          "std_s": 0.0,
+          "min_s": 0.039654697000514716,
+          "max_s": 0.039654697000514716
+        }
+      }
+    }
+  ],
+  "summary": {
+    "n_jobs": 1,
+    "n_completed_or_skipped": 1,
+    "n_failed": 0,
+    "all_completed": true,
+    "all_chemical_accuracy": false,
+    "overall": {
+      "energy": {
+        "count": 1,
+        "mean": -2.1851583616689365,
+        "std": 0.0,
+        "min": -2.1851583616689365,
+        "max": -2.1851583616689365
+      },
+      "abs_error_vs_casci": {
+        "count": 1,
+        "mean": 0.010022188322685643,
+        "std": 0.0,
+        "min": 0.010022188322685643,
+        "max": 0.010022188322685643
+      },
+      "chemical_accuracy_pass_rate": 0.0,
+      "two_qubit": {
+        "count": 1,
+        "mean": 106.0,
+        "std": 0.0,
+        "min": 106.0,
+        "max": 106.0
+      },
+      "total_excluding_hf_x": {
+        "count": 1,
+        "mean": 335.0,
+        "std": 0.0,
+        "min": 335.0,
+        "max": 335.0
+      },
+      "elapsed_s": {
+        "count": 1,
+        "mean": 31.61321154900361,
+        "std": 0.0,
+        "min": 31.61321154900361,
+        "max": 31.61321154900361
+      }
+    },
+    "by_bond": [
+      {
+        "bond_length_angstrom": 0.88,
+        "n_completed": 1,
+        "energy": {
+          "count": 1,
+          "mean": -2.1851583616689365,
+          "std": 0.0,
+          "min": -2.1851583616689365,
+          "max": -2.1851583616689365
+        },
+        "abs_error_vs_casci": {
+          "count": 1,
+          "mean": 0.010022188322685643,
+          "std": 0.0,
+          "min": 0.010022188322685643,
+          "max": 0.010022188322685643
+        },
+        "chemical_accuracy_pass_rate": 0.0,
+        "two_qubit": {
+          "count": 1,
+          "mean": 106.0,
+          "std": 0.0,
+          "min": 106.0,
+          "max": 106.0
+        },
+        "total_excluding_hf_x": {
+          "count": 1,
+          "mean": 335.0,
+          "std": 0.0,
+          "min": 335.0,
+          "max": 335.0
+        },
+        "elapsed_s": {
+          "count": 1,
+          "mean": 31.61321154900361,
+          "std": 0.0,
+          "min": 31.61321154900361,
+          "max": 31.61321154900361
+        },
+        "casci_energy": -2.195180549991622
+      }
+    ],
+    "failures": []
+  }
+}

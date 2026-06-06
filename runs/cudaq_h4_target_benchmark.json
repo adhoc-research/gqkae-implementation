@@ -1,0 +1,973 @@
+{
+  "phase": "cudaq-local-feasibility-not-final-acceptance",
+  "config": "configs/h4_paper_fidelity.yaml",
+  "sequence": [
+    6,
+    5,
+    0,
+    12,
+    9,
+    1,
+    20,
+    10,
+    20,
+    20,
+    1,
+    2,
+    16,
+    15,
+    10,
+    14,
+    5,
+    14,
+    14,
+    3
+  ],
+  "shot_counts": [
+    100,
+    1000,
+    5000,
+    10000
+  ],
+  "diagnostics": {
+    "timestamp_unix": 1780765322.9049644,
+    "platform": {
+      "python": "3.11.13",
+      "system": "Linux",
+      "machine": "x86_64",
+      "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+    },
+    "cudaq_import_error": null,
+    "cudaq_version": "CUDA-Q Version 0.14.2 (https://github.com/NVIDIA/cuda-quantum 91ab3092e76dab8887d1fdf0c99a2478ca90581c)",
+    "has_set_random_seed": true,
+    "nvidia_smi": {
+      "available": true,
+      "gpus": [
+        {
+          "index": "0",
+          "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+          "driver_version": "596.49",
+          "memory_total_mib": "12227"
+        }
+      ],
+      "raw": "0, NVIDIA GeForce RTX 5070 Ti Laptop GPU, 596.49, 12227"
+    },
+    "candidates": [
+      {
+        "label": "qpp-cpu",
+        "target": "qpp-cpu",
+        "option": null,
+        "gpu_candidate": false,
+        "usable": true,
+        "elapsed_s": 0.11511201999383047,
+        "counts": {
+          "00": 55,
+          "11": 45
+        },
+        "resources": {
+          "h": 1,
+          "cx": 1
+        }
+      },
+      {
+        "label": "nvidia",
+        "target": "nvidia",
+        "option": null,
+        "gpu_candidate": true,
+        "usable": true,
+        "elapsed_s": 0.19144369699642994,
+        "counts": {
+          "00": 55,
+          "11": 45
+        },
+        "resources": {
+          "h": 1,
+          "cx": 1
+        }
+      },
+      {
+        "label": "nvidia-fp64",
+        "target": "nvidia",
+        "option": "fp64",
+        "gpu_candidate": true,
+        "usable": true,
+        "elapsed_s": 0.05767571501201019,
+        "counts": {
+          "00": 55,
+          "11": 45
+        },
+        "resources": {
+          "h": 1,
+          "cx": 1
+        }
+      },
+      {
+        "label": "nvidia-fp32",
+        "target": "nvidia",
+        "option": "fp32",
+        "gpu_candidate": true,
+        "usable": true,
+        "elapsed_s": 0.04661670999485068,
+        "counts": {
+          "00": 55,
+          "11": 45
+        },
+        "resources": {
+          "h": 1,
+          "cx": 1
+        }
+      },
+      {
+        "label": "qpp-cuda",
+        "target": "qpp-cuda",
+        "option": null,
+        "gpu_candidate": true,
+        "usable": false,
+        "elapsed_s": 0.0011609240027610213,
+        "error": "Invalid target name (qpp-cuda)."
+      },
+      {
+        "label": "custatevec",
+        "target": "custatevec",
+        "option": null,
+        "gpu_candidate": true,
+        "usable": false,
+        "elapsed_s": 1.5860976418480277e-05,
+        "error": "Invalid target name (custatevec)."
+      }
+    ],
+    "selected_gpu": {
+      "label": "nvidia",
+      "target": "nvidia",
+      "option": null
+    }
+  },
+  "targets": [
+    {
+      "label": "qpp-cpu",
+      "target": "qpp-cpu",
+      "option": null,
+      "usable": true
+    },
+    {
+      "label": "nvidia",
+      "target": "nvidia",
+      "option": null,
+      "usable": true
+    }
+  ],
+  "references": {
+    "casci_energy": -2.1951805499916253,
+    "hf_bitstring": "11110000",
+    "n_qubits": 8,
+    "n_determinants": 36,
+    "pes_grid_for_eta": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.88,
+      0.9,
+      1.0,
+      1.1,
+      1.2,
+      1.3
+    ]
+  },
+  "benchmark_rows": [
+    {
+      "target_label": "qpp-cpu",
+      "target": "qpp-cpu",
+      "option": null,
+      "shots": 100,
+      "success": true,
+      "timing_s": {
+        "target_setup": 0.0031385280017275363,
+        "kernel_build": 0.01738732698140666,
+        "sample": 1.2305393569986336,
+        "resource_estimation": 0.08147877900046296,
+        "qsci_solve": 0.000282440974842757,
+        "total": 1.3329358650080394
+      },
+      "counts_n_bitstrings": 5,
+      "top_counts": [
+        [
+          "11110000",
+          76
+        ],
+        [
+          "11001100",
+          18
+        ],
+        [
+          "01011010",
+          4
+        ],
+        [
+          "10010110",
+          1
+        ],
+        [
+          "10011001",
+          1
+        ]
+      ],
+      "probability_metrics": {
+        "l1_distance": 0.10817981436324695,
+        "max_abs_probability_delta": 0.02474640819353277,
+        "n_5sigma_binomial_violations": 0,
+        "violations_preview": []
+      },
+      "qsci": {
+        "energy": -2.1904838331422654,
+        "energy_error_vs_casci": 0.004696716849359905,
+        "subspace_dimension": 8
+      },
+      "resources": {
+        "x": 4,
+        "h": 136,
+        "s": 25,
+        "sdg": 25,
+        "rz": 19,
+        "cx": 98,
+        "two_qubit": 98,
+        "total": 307,
+        "cudaq_estimate": {
+          "x": 4,
+          "sdg": 25,
+          "h": 136,
+          "cx": 98,
+          "rz": 19,
+          "s": 25,
+          "total": 307,
+          "two_qubit": 98
+        }
+      }
+    },
+    {
+      "target_label": "qpp-cpu",
+      "target": "qpp-cpu",
+      "option": null,
+      "shots": 1000,
+      "success": true,
+      "timing_s": {
+        "target_setup": 0.0023952310148160905,
+        "kernel_build": 0.01345623197266832,
+        "sample": 0.04427607200341299,
+        "resource_estimation": 0.08223408399499021,
+        "qsci_solve": 0.000329261994920671,
+        "total": 0.1427970690128859
+      },
+      "counts_n_bitstrings": 16,
+      "top_counts": [
+        [
+          "11110000",
+          742
+        ],
+        [
+          "11001100",
+          197
+        ],
+        [
+          "01011010",
+          22
+        ],
+        [
+          "10010110",
+          6
+        ],
+        [
+          "00000000",
+          4
+        ],
+        [
+          "10100101",
+          4
+        ],
+        [
+          "01101001",
+          4
+        ],
+        [
+          "10011001",
+          3
+        ],
+        [
+          "00110011",
+          3
+        ],
+        [
+          "01010101",
+          3
+        ]
+      ],
+      "probability_metrics": {
+        "l1_distance": 0.031083914361380492,
+        "max_abs_probability_delta": 0.0077464081935327556,
+        "n_5sigma_binomial_violations": 0,
+        "violations_preview": []
+      },
+      "qsci": {
+        "energy": -2.1948187951697733,
+        "energy_error_vs_casci": 0.0003617548218519673,
+        "subspace_dimension": 14
+      },
+      "resources": {
+        "x": 4,
+        "h": 136,
+        "s": 25,
+        "sdg": 25,
+        "rz": 19,
+        "cx": 98,
+        "two_qubit": 98,
+        "total": 307,
+        "cudaq_estimate": {
+          "x": 4,
+          "sdg": 25,
+          "h": 136,
+          "cx": 98,
+          "rz": 19,
+          "s": 25,
+          "total": 307,
+          "two_qubit": 98
+        }
+      }
+    },
+    {
+      "target_label": "qpp-cpu",
+      "target": "qpp-cpu",
+      "option": null,
+      "shots": 5000,
+      "success": true,
+      "timing_s": {
+        "target_setup": 0.002407768974080682,
+        "kernel_build": 0.015048813977045938,
+        "sample": 0.5120332119986415,
+        "resource_estimation": 0.08286477500223555,
+        "qsci_solve": 0.0003052889951504767,
+        "total": 0.6127422139979899
+      },
+      "counts_n_bitstrings": 20,
+      "top_counts": [
+        [
+          "11110000",
+          3631
+        ],
+        [
+          "11001100",
+          1067
+        ],
+        [
+          "01011010",
+          117
+        ],
+        [
+          "01101001",
+          31
+        ],
+        [
+          "00110011",
+          22
+        ],
+        [
+          "00000000",
+          18
+        ],
+        [
+          "10010110",
+          17
+        ],
+        [
+          "11000011",
+          15
+        ],
+        [
+          "10100101",
+          14
+        ],
+        [
+          "01100110",
+          11
+        ]
+      ],
+      "probability_metrics": {
+        "l1_distance": 0.029043458706010595,
+        "max_abs_probability_delta": 0.011587170758736498,
+        "n_5sigma_binomial_violations": 0,
+        "violations_preview": []
+      },
+      "qsci": {
+        "energy": -2.1951576342769625,
+        "energy_error_vs_casci": 2.2915714662730124e-05,
+        "subspace_dimension": 16
+      },
+      "resources": {
+        "x": 4,
+        "h": 136,
+        "s": 25,
+        "sdg": 25,
+        "rz": 19,
+        "cx": 98,
+        "two_qubit": 98,
+        "total": 307,
+        "cudaq_estimate": {
+          "x": 4,
+          "sdg": 25,
+          "h": 136,
+          "cx": 98,
+          "rz": 19,
+          "s": 25,
+          "total": 307,
+          "two_qubit": 98
+        }
+      }
+    },
+    {
+      "target_label": "qpp-cpu",
+      "target": "qpp-cpu",
+      "option": null,
+      "shots": 10000,
+      "success": true,
+      "timing_s": {
+        "target_setup": 0.0024457849794998765,
+        "kernel_build": 0.013180412002839148,
+        "sample": 0.8153535809833556,
+        "resource_estimation": 0.08060873500653543,
+        "qsci_solve": 0.0003108640084974468,
+        "total": 0.9119885860127397
+      },
+      "counts_n_bitstrings": 20,
+      "top_counts": [
+        [
+          "11110000",
+          7336
+        ],
+        [
+          "11001100",
+          2112
+        ],
+        [
+          "01011010",
+          213
+        ],
+        [
+          "01101001",
+          56
+        ],
+        [
+          "00110011",
+          42
+        ],
+        [
+          "10010110",
+          37
+        ],
+        [
+          "10100101",
+          28
+        ],
+        [
+          "01100110",
+          26
+        ],
+        [
+          "00000000",
+          25
+        ],
+        [
+          "11000011",
+          24
+        ]
+      ],
+      "probability_metrics": {
+        "l1_distance": 0.01804742258031013,
+        "max_abs_probability_delta": 0.006453591806467235,
+        "n_5sigma_binomial_violations": 0,
+        "violations_preview": []
+      },
+      "qsci": {
+        "energy": -2.1951576342769625,
+        "energy_error_vs_casci": 2.2915714662730124e-05,
+        "subspace_dimension": 16
+      },
+      "resources": {
+        "x": 4,
+        "h": 136,
+        "s": 25,
+        "sdg": 25,
+        "rz": 19,
+        "cx": 98,
+        "two_qubit": 98,
+        "total": 307,
+        "cudaq_estimate": {
+          "x": 4,
+          "sdg": 25,
+          "h": 136,
+          "cx": 98,
+          "rz": 19,
+          "s": 25,
+          "total": 307,
+          "two_qubit": 98
+        }
+      }
+    },
+    {
+      "target_label": "nvidia",
+      "target": "nvidia",
+      "option": null,
+      "shots": 100,
+      "success": true,
+      "timing_s": {
+        "target_setup": 0.0030366879946086556,
+        "kernel_build": 0.014609909994760528,
+        "sample": 0.04903181898407638,
+        "resource_estimation": 0.06670871301321313,
+        "qsci_solve": 0.00023171899374574423,
+        "total": 0.13368696899851784
+      },
+      "counts_n_bitstrings": 5,
+      "top_counts": [
+        [
+          "11110000",
+          76
+        ],
+        [
+          "11001100",
+          18
+        ],
+        [
+          "01011010",
+          4
+        ],
+        [
+          "10010110",
+          1
+        ],
+        [
+          "10011001",
+          1
+        ]
+      ],
+      "probability_metrics": {
+        "l1_distance": 0.10817981436324695,
+        "max_abs_probability_delta": 0.02474640819353277,
+        "n_5sigma_binomial_violations": 0,
+        "violations_preview": []
+      },
+      "qsci": {
+        "energy": -2.1904838331422654,
+        "energy_error_vs_casci": 0.004696716849359905,
+        "subspace_dimension": 8
+      },
+      "resources": {
+        "x": 4,
+        "h": 136,
+        "s": 25,
+        "sdg": 25,
+        "rz": 19,
+        "cx": 98,
+        "two_qubit": 98,
+        "total": 307,
+        "cudaq_estimate": {
+          "x": 4,
+          "sdg": 25,
+          "h": 136,
+          "cx": 98,
+          "rz": 19,
+          "s": 25,
+          "total": 307,
+          "two_qubit": 98
+        }
+      }
+    },
+    {
+      "target_label": "nvidia",
+      "target": "nvidia",
+      "option": null,
+      "shots": 1000,
+      "success": true,
+      "timing_s": {
+        "target_setup": 0.0024413240025751293,
+        "kernel_build": 0.01410664402646944,
+        "sample": 0.036488057987298816,
+        "resource_estimation": 0.06398589498712681,
+        "qsci_solve": 0.0003090419922955334,
+        "total": 0.11740152499987744
+      },
+      "counts_n_bitstrings": 16,
+      "top_counts": [
+        [
+          "11110000",
+          742
+        ],
+        [
+          "11001100",
+          197
+        ],
+        [
+          "01011010",
+          22
+        ],
+        [
+          "10010110",
+          6
+        ],
+        [
+          "10100101",
+          4
+        ],
+        [
+          "00000000",
+          4
+        ],
+        [
+          "01101001",
+          4
+        ],
+        [
+          "00110011",
+          3
+        ],
+        [
+          "10011001",
+          3
+        ],
+        [
+          "01010101",
+          3
+        ]
+      ],
+      "probability_metrics": {
+        "l1_distance": 0.031083914361380492,
+        "max_abs_probability_delta": 0.0077464081935327556,
+        "n_5sigma_binomial_violations": 0,
+        "violations_preview": []
+      },
+      "qsci": {
+        "energy": -2.1948187951697733,
+        "energy_error_vs_casci": 0.0003617548218519673,
+        "subspace_dimension": 14
+      },
+      "resources": {
+        "x": 4,
+        "h": 136,
+        "s": 25,
+        "sdg": 25,
+        "rz": 19,
+        "cx": 98,
+        "two_qubit": 98,
+        "total": 307,
+        "cudaq_estimate": {
+          "x": 4,
+          "sdg": 25,
+          "h": 136,
+          "cx": 98,
+          "rz": 19,
+          "s": 25,
+          "total": 307,
+          "two_qubit": 98
+        }
+      }
+    },
+    {
+      "target_label": "nvidia",
+      "target": "nvidia",
+      "option": null,
+      "shots": 5000,
+      "success": true,
+      "timing_s": {
+        "target_setup": 0.002977021998958662,
+        "kernel_build": 0.014491754001937807,
+        "sample": 0.04204462899360806,
+        "resource_estimation": 0.07286249598837458,
+        "qsci_solve": 0.00031414401018992066,
+        "total": 0.13276454200968146
+      },
+      "counts_n_bitstrings": 20,
+      "top_counts": [
+        [
+          "11110000",
+          3631
+        ],
+        [
+          "11001100",
+          1067
+        ],
+        [
+          "01011010",
+          117
+        ],
+        [
+          "01101001",
+          31
+        ],
+        [
+          "00110011",
+          22
+        ],
+        [
+          "00000000",
+          18
+        ],
+        [
+          "10010110",
+          17
+        ],
+        [
+          "11000011",
+          15
+        ],
+        [
+          "10100101",
+          14
+        ],
+        [
+          "01100110",
+          11
+        ]
+      ],
+      "probability_metrics": {
+        "l1_distance": 0.029043458706010595,
+        "max_abs_probability_delta": 0.011587170758736498,
+        "n_5sigma_binomial_violations": 0,
+        "violations_preview": []
+      },
+      "qsci": {
+        "energy": -2.1951576342769625,
+        "energy_error_vs_casci": 2.2915714662730124e-05,
+        "subspace_dimension": 16
+      },
+      "resources": {
+        "x": 4,
+        "h": 136,
+        "s": 25,
+        "sdg": 25,
+        "rz": 19,
+        "cx": 98,
+        "two_qubit": 98,
+        "total": 307,
+        "cudaq_estimate": {
+          "x": 4,
+          "sdg": 25,
+          "h": 136,
+          "cx": 98,
+          "rz": 19,
+          "s": 25,
+          "total": 307,
+          "two_qubit": 98
+        }
+      }
+    },
+    {
+      "target_label": "nvidia",
+      "target": "nvidia",
+      "option": null,
+      "shots": 10000,
+      "success": true,
+      "timing_s": {
+        "target_setup": 0.003030148014659062,
+        "kernel_build": 0.014243536978028715,
+        "sample": 0.04619381501106545,
+        "resource_estimation": 0.06640219100518152,
+        "qsci_solve": 0.0003584520018193871,
+        "total": 0.13030776599771343
+      },
+      "counts_n_bitstrings": 20,
+      "top_counts": [
+        [
+          "11110000",
+          7336
+        ],
+        [
+          "11001100",
+          2112
+        ],
+        [
+          "01011010",
+          213
+        ],
+        [
+          "01101001",
+          56
+        ],
+        [
+          "00110011",
+          42
+        ],
+        [
+          "10010110",
+          37
+        ],
+        [
+          "10100101",
+          28
+        ],
+        [
+          "01100110",
+          26
+        ],
+        [
+          "00000000",
+          25
+        ],
+        [
+          "11000011",
+          24
+        ]
+      ],
+      "probability_metrics": {
+        "l1_distance": 0.01804742258031013,
+        "max_abs_probability_delta": 0.006453591806467235,
+        "n_5sigma_binomial_violations": 0,
+        "violations_preview": []
+      },
+      "qsci": {
+        "energy": -2.1951576342769625,
+        "energy_error_vs_casci": 2.2915714662730124e-05,
+        "subspace_dimension": 16
+      },
+      "resources": {
+        "x": 4,
+        "h": 136,
+        "s": 25,
+        "sdg": 25,
+        "rz": 19,
+        "cx": 98,
+        "two_qubit": 98,
+        "total": 307,
+        "cudaq_estimate": {
+          "x": 4,
+          "sdg": 25,
+          "h": 136,
+          "cx": 98,
+          "rz": 19,
+          "s": 25,
+          "total": 307,
+          "two_qubit": 98
+        }
+      }
+    }
+  ],
+  "eta_by_target": {
+    "qpp-cpu": {
+      "observed_max_shot_count": 10000,
+      "rate_scaled_from_largest_shots": {
+        "one_sequence_100000_shots_s": 8.25017081486294
+      },
+      "linear_fit_total_vs_shots": {
+        "slope_s_per_shot": 6.2544795352468525e-06,
+        "intercept_s": 0.7249416533785453,
+        "one_sequence_100000_shots_s": 1.3503896069032306
+      },
+      "linear_fit_sample_vs_shots_plus_fixed": {
+        "sample_slope_s_per_shot": 6.652255590315905e-06,
+        "sample_intercept_s": 0.6237752267449893,
+        "one_sequence_100000_shots_s": 1.385635790805964
+      },
+      "eta_assumptions": [
+        {
+          "assumption": "rate_scaled_from_largest_shots",
+          "table_i": {
+            "one_sequence_100000_shots_s": 8.25017081486294,
+            "one_iteration_batch10_s": 82.5017081486294,
+            "one_trial_100_iterations_s": 8250.17081486294,
+            "five_independent_trials_s": 41250.8540743147
+          },
+          "pes_projection_only": {
+            "grid_points": 10,
+            "one_seed_all_grid_points_s": 82501.7081486294,
+            "five_trials_per_grid_point_s": 412508.540743147
+          }
+        },
+        {
+          "assumption": "linear_fit_total_vs_shots",
+          "table_i": {
+            "one_sequence_100000_shots_s": 1.3503896069032306,
+            "one_iteration_batch10_s": 13.503896069032306,
+            "one_trial_100_iterations_s": 1350.3896069032305,
+            "five_independent_trials_s": 6751.948034516153
+          },
+          "pes_projection_only": {
+            "grid_points": 10,
+            "one_seed_all_grid_points_s": 13503.896069032306,
+            "five_trials_per_grid_point_s": 67519.48034516153
+          }
+        },
+        {
+          "assumption": "linear_fit_sample_vs_shots_plus_fixed",
+          "table_i": {
+            "one_sequence_100000_shots_s": 1.385635790805964,
+            "one_iteration_batch10_s": 13.856357908059639,
+            "one_trial_100_iterations_s": 1385.635790805964,
+            "five_independent_trials_s": 6928.17895402982
+          },
+          "pes_projection_only": {
+            "grid_points": 10,
+            "one_seed_all_grid_points_s": 13856.35790805964,
+            "five_trials_per_grid_point_s": 69281.7895402982
+          }
+        }
+      ]
+    },
+    "nvidia": {
+      "observed_max_shot_count": 10000,
+      "rate_scaled_from_largest_shots": {
+        "one_sequence_100000_shots_s": 0.5460521010973025
+      },
+      "linear_fit_total_vs_shots": {
+        "slope_s_per_shot": 4.6029267413250254e-07,
+        "intercept_s": 0.1266875224880642,
+        "one_sequence_100000_shots_s": 0.17271678990131445
+      },
+      "linear_fit_sample_vs_shots_plus_fixed": {
+        "sample_slope_s_per_shot": 2.3159405360135727e-07,
+        "sample_intercept_s": 0.04250741417826671,
+        "one_sequence_100000_shots_s": 0.1497807705250504
+      },
+      "eta_assumptions": [
+        {
+          "assumption": "rate_scaled_from_largest_shots",
+          "table_i": {
+            "one_sequence_100000_shots_s": 0.5460521010973025,
+            "one_iteration_batch10_s": 5.460521010973025,
+            "one_trial_100_iterations_s": 546.0521010973025,
+            "five_independent_trials_s": 2730.2605054865126
+          },
+          "pes_projection_only": {
+            "grid_points": 10,
+            "one_seed_all_grid_points_s": 5460.521010973025,
+            "five_trials_per_grid_point_s": 27302.605054865126
+          }
+        },
+        {
+          "assumption": "linear_fit_total_vs_shots",
+          "table_i": {
+            "one_sequence_100000_shots_s": 0.17271678990131445,
+            "one_iteration_batch10_s": 1.7271678990131445,
+            "one_trial_100_iterations_s": 172.71678990131446,
+            "five_independent_trials_s": 863.5839495065723
+          },
+          "pes_projection_only": {
+            "grid_points": 10,
+            "one_seed_all_grid_points_s": 1727.1678990131445,
+            "five_trials_per_grid_point_s": 8635.839495065722
+          }
+        },
+        {
+          "assumption": "linear_fit_sample_vs_shots_plus_fixed",
+          "table_i": {
+            "one_sequence_100000_shots_s": 0.1497807705250504,
+            "one_iteration_batch10_s": 1.497807705250504,
+            "one_trial_100_iterations_s": 149.7807705250504,
+            "five_independent_trials_s": 748.9038526252521
+          },
+          "pes_projection_only": {
+            "grid_points": 10,
+            "one_seed_all_grid_points_s": 1497.8077052505041,
+            "five_trials_per_grid_point_s": 7489.038526252521
+          }
+        }
+      ]
+    }
+  }
+}

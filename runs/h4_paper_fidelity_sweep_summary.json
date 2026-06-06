@@ -1,0 +1,133 @@
+{
+  "paper_table_i_h4_gqkae": {
+    "two_qubit_mean": 100.0,
+    "two_qubit_std": 3.7,
+    "total_mean": 314.0,
+    "total_std": 15.0
+  },
+  "n_runs": 10,
+  "energy_error": {
+    "mean": -3.4194869158454822e-15,
+    "std": 5.634860374059479e-16,
+    "n": 10
+  },
+  "two_qubit": {
+    "mean": 100.4,
+    "std": 5.71314274283428,
+    "n": 10
+  },
+  "total_excluding_hf_x": {
+    "mean": 320.8,
+    "std": 10.543244282477762,
+    "n": 10
+  },
+  "total_including_hf_x": {
+    "mean": 324.8,
+    "std": 10.543244282477762,
+    "n": 10
+  },
+  "all_chemical_accuracy": true,
+  "runs": [
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed0",
+      "seed": 0,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.1086244689504383e-15,
+      "two_qubit": 98.0,
+      "total_excluding_hf_x": 315.0,
+      "total_including_hf_x": 319.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed1",
+      "seed": 1,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.1086244689504383e-15,
+      "two_qubit": 102.0,
+      "total_excluding_hf_x": 331.0,
+      "total_including_hf_x": 335.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed2",
+      "seed": 2,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -4.884981308350689e-15,
+      "two_qubit": 94.0,
+      "total_excluding_hf_x": 315.0,
+      "total_including_hf_x": 319.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed3",
+      "seed": 3,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.1086244689504383e-15,
+      "two_qubit": 90.0,
+      "total_excluding_hf_x": 297.0,
+      "total_including_hf_x": 301.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed4",
+      "seed": 4,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.552713678800501e-15,
+      "two_qubit": 112.0,
+      "total_excluding_hf_x": 336.0,
+      "total_including_hf_x": 340.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed5",
+      "seed": 5,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.1086244689504383e-15,
+      "two_qubit": 100.0,
+      "total_excluding_hf_x": 320.0,
+      "total_including_hf_x": 324.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed6",
+      "seed": 6,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.9968028886505635e-15,
+      "two_qubit": 102.0,
+      "total_excluding_hf_x": 331.0,
+      "total_including_hf_x": 335.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed7",
+      "seed": 7,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.1086244689504383e-15,
+      "two_qubit": 104.0,
+      "total_excluding_hf_x": 316.0,
+      "total_including_hf_x": 320.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed8",
+      "seed": 8,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.1086244689504383e-15,
+      "two_qubit": 98.0,
+      "total_excluding_hf_x": 323.0,
+      "total_including_hf_x": 327.0
+    },
+    {
+      "run_dir": "runs/h4_paper_fidelity_sweep_seed9",
+      "seed": 9,
+      "backend": "determinant",
+      "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+      "energy_error": -3.1086244689504383e-15,
+      "two_qubit": 104.0,
+      "total_excluding_hf_x": 324.0,
+      "total_including_hf_x": 328.0
+    }
+  ],
+  "practical_numerical_agreement": true
+}

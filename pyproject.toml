@@ -17,6 +17,11 @@ cuda = [
   "cudaq>=0.14; platform_system == 'Linux' and python_version >= '3.11'",
   "cuda-quantum-cu13>=0.14; platform_system == 'Linux' and python_version >= '3.11'",
 ]
+paper = [
+  # Provides `import tequila` and the ClosedShellAmplitudes / make_excitation_gate
+  # path used by the cited gqe-for-qsci operator-pool construction.
+  "tequila-basic>=1.9.11",
+]
 dev = [
   "pytest>=8.0",
   "ruff>=0.6",

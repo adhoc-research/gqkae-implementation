@@ -1,0 +1,54 @@
+[
+  {
+    "iteration": 0,
+    "energies": [
+      -2.1851583616689365
+    ],
+    "mean_energy": -2.1851583616689365,
+    "best_batch_energy": -2.1851583616689365,
+    "best_so_far_energy": -2.1851583616689365,
+    "best_so_far_error": 0.010022188322685643,
+    "mean_subspace_dimension": 11.0,
+    "mean_loss": 0.0,
+    "mean_total_gates": 339.0,
+    "mean_two_qubit_gates": 106.0,
+    "timing_s": {
+      "generation": 0.08249893397442065,
+      "evaluation": 0.3508482289907988,
+      "optimization": 0.039654697000514716,
+      "iteration_total": 0.4734593960165512,
+      "per_circuit_evaluation": {
+        "count": 1.0,
+        "total_s": 0.3508242160023656,
+        "mean_s": 0.3508242160023656,
+        "std_s": 0.0,
+        "min_s": 0.3508242160023656,
+        "max_s": 0.3508242160023656
+      },
+      "per_circuit_sample": {
+        "count": 1.0,
+        "total_s": 0.3504388869914692,
+        "mean_s": 0.3504388869914692,
+        "std_s": 0.0,
+        "min_s": 0.3504388869914692,
+        "max_s": 0.3504388869914692
+      },
+      "per_circuit_qsci": {
+        "count": 1.0,
+        "total_s": 0.00038322401815094054,
+        "mean_s": 0.00038322401815094054,
+        "std_s": 0.0,
+        "min_s": 0.00038322401815094054,
+        "max_s": 0.00038322401815094054
+      }
+    },
+    "circuit_timings_s": [
+      {
+        "circuit_index": 0,
+        "sample_elapsed_s": 0.3504388869914692,
+        "qsci_elapsed_s": 0.00038322401815094054,
+        "total_elapsed_s": 0.3508242160023656
+      }
+    ]
+  }
+]

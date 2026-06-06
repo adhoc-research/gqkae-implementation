@@ -1,0 +1,113 @@
+{
+  "timestamp_unix": 1780765214.3220816,
+  "platform": {
+    "python": "3.11.13",
+    "system": "Linux",
+    "machine": "x86_64",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+  },
+  "cudaq_import_error": null,
+  "cudaq_version": "CUDA-Q Version 0.14.2 (https://github.com/NVIDIA/cuda-quantum 91ab3092e76dab8887d1fdf0c99a2478ca90581c)",
+  "has_set_random_seed": true,
+  "nvidia_smi": {
+    "available": true,
+    "gpus": [
+      {
+        "index": "0",
+        "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "driver_version": "596.49",
+        "memory_total_mib": "12227"
+      }
+    ],
+    "raw": "0, NVIDIA GeForce RTX 5070 Ti Laptop GPU, 596.49, 12227"
+  },
+  "candidates": [
+    {
+      "label": "qpp-cpu",
+      "target": "qpp-cpu",
+      "option": null,
+      "gpu_candidate": false,
+      "usable": true,
+      "elapsed_s": 0.11634855999727733,
+      "counts": {
+        "00": 55,
+        "11": 45
+      },
+      "resources": {
+        "h": 1,
+        "cx": 1
+      }
+    },
+    {
+      "label": "nvidia",
+      "target": "nvidia",
+      "option": null,
+      "gpu_candidate": true,
+      "usable": true,
+      "elapsed_s": 0.310156077001011,
+      "counts": {
+        "00": 55,
+        "11": 45
+      },
+      "resources": {
+        "h": 1,
+        "cx": 1
+      }
+    },
+    {
+      "label": "nvidia-fp64",
+      "target": "nvidia",
+      "option": "fp64",
+      "gpu_candidate": true,
+      "usable": true,
+      "elapsed_s": 0.06973050200031139,
+      "counts": {
+        "00": 55,
+        "11": 45
+      },
+      "resources": {
+        "h": 1,
+        "cx": 1
+      }
+    },
+    {
+      "label": "nvidia-fp32",
+      "target": "nvidia",
+      "option": "fp32",
+      "gpu_candidate": true,
+      "usable": true,
+      "elapsed_s": 0.05829379300121218,
+      "counts": {
+        "00": 55,
+        "11": 45
+      },
+      "resources": {
+        "h": 1,
+        "cx": 1
+      }
+    },
+    {
+      "label": "qpp-cuda",
+      "target": "qpp-cuda",
+      "option": null,
+      "gpu_candidate": true,
+      "usable": false,
+      "elapsed_s": 0.0037563219957519323,
+      "error": "Invalid target name (qpp-cuda)."
+    },
+    {
+      "label": "custatevec",
+      "target": "custatevec",
+      "option": null,
+      "gpu_candidate": true,
+      "usable": false,
+      "elapsed_s": 1.6803998732939363e-05,
+      "error": "Invalid target name (custatevec)."
+    }
+  ],
+  "selected_gpu": {
+    "label": "nvidia",
+    "target": "nvidia",
+    "option": null
+  }
+}

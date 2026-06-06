@@ -1,0 +1,54 @@
+experiment:
+  name: h4_paper_fidelity
+  seed: 7
+  output_dir: runs/h4_paper_fidelity_seed7
+
+molecule:
+  name: H4
+  bond_length_angstrom: 0.88
+  basis: 6-31g
+  active_electrons: 4
+  active_orbitals: 4
+  geometry: linear_chain
+  spin_orbital_ordering: interleaved
+
+operator_pool:
+  spec: paper_pauli_evolution
+  params: null
+  sequence_length: 20
+  excitation_angle: 0.7853981633974483
+  include_noop: true
+  ccsd_threshold: 0.000001
+  remove_z_ladder: true
+  only_use_first_pauli: true
+  dedupe_pauli_words: true
+
+qsci:
+  shots: 100000
+  dmax: 2000
+  add_hf_det: true
+  enlarge_method: symmetry_completion
+  backend: cudaq
+  cudaq_target: qpp-cpu
+  cudaq_option: null
+  cudaq_reverse_bitstrings: false
+
+model:
+  d_model: 64
+  n_layers: 2
+  n_heads: 4
+  latent_dim: 12
+  qkan_layers: 1
+  daruan_terms: 4
+  dropout: 0.0
+
+training:
+  iterations: 100
+  batch_circuits: 10
+  policy_updates: 30
+  learning_rate: 0.000005
+  weight_decay: 0.01
+  grpo_clip: 0.2
+  repetition_penalty: 1.2
+  temperature: 1.0
+  device: cpu

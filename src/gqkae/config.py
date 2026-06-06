@@ -24,6 +24,7 @@ class MoleculeConfig:
     active_electrons: int = 4
     active_orbitals: int = 4
     geometry: str = "linear_chain"
+    spin_orbital_ordering: str = "alpha_beta"  # alpha_beta or interleaved
 
 
 @dataclass(slots=True)
@@ -32,6 +33,7 @@ class OperatorPoolConfig:
     excitation_angle: float = 0.7853981633974483
     include_noop: bool = True
     spec: str = "excitation"
+    params: list[float] | None = None
     ccsd_threshold: float = 1e-6
     remove_z_ladder: bool = False
     only_use_first_pauli: bool = False
@@ -43,6 +45,7 @@ class QSCIConfig:
     shots: int = 1_000
     dmax: int = 100
     add_hf_det: bool = True
+    enlarge_method: str = "none"  # none or symmetry_completion
     backend: str = "determinant"
     cudaq_target: str | None = None
     cudaq_option: str | None = None

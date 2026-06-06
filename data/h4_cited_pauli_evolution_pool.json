@@ -1,0 +1,599 @@
+{
+  "active_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "n_screened_spin_excitations": 20,
+  "schema": "gqkae.h4_cited_pauli_evolution_pool.v1",
+  "screened_spin_excitations": [
+    {
+      "coefficient": -0.24132779473007732,
+      "indices": [
+        5,
+        3,
+        4,
+        2
+      ]
+    },
+    {
+      "coefficient": -0.08725667006252369,
+      "indices": [
+        5,
+        1,
+        4,
+        0
+      ]
+    },
+    {
+      "coefficient": 0.07650022344251384,
+      "indices": [
+        5,
+        1,
+        6,
+        2
+      ]
+    },
+    {
+      "coefficient": 0.05411933079097294,
+      "indices": [
+        4,
+        0,
+        6,
+        2
+      ]
+    },
+    {
+      "coefficient": 0.05411933079097294,
+      "indices": [
+        5,
+        1,
+        7,
+        3
+      ]
+    },
+    {
+      "coefficient": 0.07650022344251384,
+      "indices": [
+        7,
+        3,
+        4,
+        0
+      ]
+    },
+    {
+      "coefficient": 0.05411933079097294,
+      "indices": [
+        6,
+        2,
+        4,
+        0
+      ]
+    },
+    {
+      "coefficient": 0.05411933079097294,
+      "indices": [
+        7,
+        3,
+        5,
+        1
+      ]
+    },
+    {
+      "coefficient": -0.05718277641961033,
+      "indices": [
+        7,
+        3,
+        6,
+        2
+      ]
+    },
+    {
+      "coefficient": -0.040370580395832925,
+      "indices": [
+        7,
+        1,
+        6,
+        0
+      ]
+    },
+    {
+      "coefficient": -0.03333427347351146,
+      "indices": [
+        6,
+        2
+      ]
+    },
+    {
+      "coefficient": -0.03333427347351146,
+      "indices": [
+        7,
+        3
+      ]
+    },
+    {
+      "coefficient": 0.022380892651540897,
+      "indices": [
+        7,
+        1,
+        4,
+        2
+      ]
+    },
+    {
+      "coefficient": -0.05411933079097294,
+      "indices": [
+        6,
+        0,
+        4,
+        2
+      ]
+    },
+    {
+      "coefficient": -0.05411933079097294,
+      "indices": [
+        7,
+        1,
+        5,
+        3
+      ]
+    },
+    {
+      "coefficient": 0.022380892651540897,
+      "indices": [
+        5,
+        3,
+        6,
+        0
+      ]
+    },
+    {
+      "coefficient": -0.05411933079097294,
+      "indices": [
+        4,
+        2,
+        6,
+        0
+      ]
+    },
+    {
+      "coefficient": -0.05411933079097294,
+      "indices": [
+        5,
+        3,
+        7,
+        1
+      ]
+    },
+    {
+      "coefficient": -0.009615095539039973,
+      "indices": [
+        4,
+        0
+      ]
+    },
+    {
+      "coefficient": -0.009615095539039973,
+      "indices": [
+        5,
+        1
+      ]
+    }
+  ],
+  "settings": {
+    "active_electrons": 4,
+    "active_orbitals": 4,
+    "basis": "6-31g",
+    "bond_length_angstrom": 0.88,
+    "ccsd_threshold": 1e-06,
+    "include_identity": true,
+    "n_qubits": 8,
+    "only_use_first_pauli": true,
+    "params": null,
+    "remove_z_ladder": true,
+    "spin_orbital_ordering": "interleaved_alpha_beta"
+  },
+  "sha256": "8b980b892c91ee4e3c45c1814bb25cb46879a29b487485f38cc8759cba74f579",
+  "tokens": [
+    {
+      "coefficient": 0.0,
+      "gate_count": {
+        "cx": 0,
+        "h": 0,
+        "rz": 0,
+        "s": 0,
+        "sdg": 0,
+        "total": 0,
+        "two_qubit": 0
+      },
+      "kind": "identity",
+      "pauli_word": "IIIIIIII",
+      "source_gate_index": null,
+      "tequila_gate_parameter": 0.0,
+      "tequila_paulistring_coeff": 0.0,
+      "token": 0
+    },
+    {
+      "coefficient": -0.24132779473007732,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IIXXYXII",
+      "source_gate_index": 0,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": -0.24132779473007732,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 1
+    },
+    {
+      "coefficient": -0.08725667006252369,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "XXIIYXII",
+      "source_gate_index": 1,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": -0.08725667006252369,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 2
+    },
+    {
+      "coefficient": 0.07650022344251384,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 3,
+        "sdg": 3,
+        "total": 21,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IYYIIYXI",
+      "source_gate_index": 2,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": 0.07650022344251384,
+      "tequila_paulistring_coeff": -0.125,
+      "token": 3
+    },
+    {
+      "coefficient": 0.05411933079097294,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 3,
+        "sdg": 3,
+        "total": 21,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "YIYIYIXI",
+      "source_gate_index": 3,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": 0.05411933079097294,
+      "tequila_paulistring_coeff": -0.125,
+      "token": 4
+    },
+    {
+      "coefficient": 0.05411933079097294,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 3,
+        "sdg": 3,
+        "total": 21,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IYIYIYIX",
+      "source_gate_index": 4,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": 0.05411933079097294,
+      "tequila_paulistring_coeff": -0.125,
+      "token": 5
+    },
+    {
+      "coefficient": 0.07650022344251384,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "XIIXYIIX",
+      "source_gate_index": 5,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": 0.07650022344251384,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 6
+    },
+    {
+      "coefficient": 0.05411933079097294,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "XIXIYIXI",
+      "source_gate_index": 6,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": 0.05411933079097294,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 7
+    },
+    {
+      "coefficient": 0.05411933079097294,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IXIXIYIX",
+      "source_gate_index": 7,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": 0.05411933079097294,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 8
+    },
+    {
+      "coefficient": -0.05718277641961033,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IIXXIIYX",
+      "source_gate_index": 8,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": -0.05718277641961033,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 9
+    },
+    {
+      "coefficient": -0.040370580395832925,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "XXIIIIYX",
+      "source_gate_index": 9,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": -0.040370580395832925,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 10
+    },
+    {
+      "coefficient": -0.03333427347351146,
+      "gate_count": {
+        "cx": 2,
+        "h": 4,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 9,
+        "two_qubit": 2
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IIYIIIXI",
+      "source_gate_index": 10,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": -0.03333427347351146,
+      "tequila_paulistring_coeff": -0.5,
+      "token": 11
+    },
+    {
+      "coefficient": -0.03333427347351146,
+      "gate_count": {
+        "cx": 2,
+        "h": 4,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 9,
+        "two_qubit": 2
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IIIYIIIX",
+      "source_gate_index": 11,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": -0.03333427347351146,
+      "tequila_paulistring_coeff": -0.5,
+      "token": 12
+    },
+    {
+      "coefficient": 0.022380892651540897,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 3,
+        "sdg": 3,
+        "total": 21,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IYYIYIIX",
+      "source_gate_index": 12,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": 0.022380892651540897,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 13
+    },
+    {
+      "coefficient": -0.05411933079097294,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "YIXIXIXI",
+      "source_gate_index": 13,
+      "source_paulistring_index": 1,
+      "tequila_gate_parameter": -0.05411933079097294,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 14
+    },
+    {
+      "coefficient": -0.05411933079097294,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IYIXIXIX",
+      "source_gate_index": 14,
+      "source_paulistring_index": 1,
+      "tequila_gate_parameter": -0.05411933079097294,
+      "tequila_paulistring_coeff": 0.125,
+      "token": 15
+    },
+    {
+      "coefficient": 0.022380892651540897,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 17,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "XIIXIYXI",
+      "source_gate_index": 15,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": 0.022380892651540897,
+      "tequila_paulistring_coeff": -0.125,
+      "token": 16
+    },
+    {
+      "coefficient": -0.05411933079097294,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 3,
+        "sdg": 3,
+        "total": 21,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "YIXIYIYI",
+      "source_gate_index": 16,
+      "source_paulistring_index": 1,
+      "tequila_gate_parameter": -0.05411933079097294,
+      "tequila_paulistring_coeff": -0.125,
+      "token": 17
+    },
+    {
+      "coefficient": -0.05411933079097294,
+      "gate_count": {
+        "cx": 6,
+        "h": 8,
+        "rz": 1,
+        "s": 3,
+        "sdg": 3,
+        "total": 21,
+        "two_qubit": 6
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IYIXIYIY",
+      "source_gate_index": 17,
+      "source_paulistring_index": 1,
+      "tequila_gate_parameter": -0.05411933079097294,
+      "tequila_paulistring_coeff": -0.125,
+      "token": 18
+    },
+    {
+      "coefficient": -0.009615095539039973,
+      "gate_count": {
+        "cx": 2,
+        "h": 4,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 9,
+        "two_qubit": 2
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "YIIIXIII",
+      "source_gate_index": 18,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": -0.009615095539039973,
+      "tequila_paulistring_coeff": -0.5,
+      "token": 19
+    },
+    {
+      "coefficient": -0.009615095539039973,
+      "gate_count": {
+        "cx": 2,
+        "h": 4,
+        "rz": 1,
+        "s": 1,
+        "sdg": 1,
+        "total": 9,
+        "two_qubit": 2
+      },
+      "kind": "pauli_evolution",
+      "pauli_word": "IYIIIXII",
+      "source_gate_index": 19,
+      "source_paulistring_index": 0,
+      "tequila_gate_parameter": -0.009615095539039973,
+      "tequila_paulistring_coeff": -0.5,
+      "token": 20
+    }
+  ],
+  "vocab_size": 21
+}

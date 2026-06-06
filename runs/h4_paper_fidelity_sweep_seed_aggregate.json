@@ -1,0 +1,4674 @@
+{
+  "runs": [
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 0,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed0"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.1951805499916253,
+        "error": -3.1086244689504383e-15,
+        "sequence": [
+          19,
+          15,
+          19,
+          12,
+          1,
+          5,
+          11,
+          5,
+          2,
+          7,
+          7,
+          14,
+          15,
+          0,
+          5,
+          5,
+          16,
+          1,
+          3,
+          3
+        ],
+        "iteration": 74,
+        "gate_count": {
+          "x": 4,
+          "h": 136,
+          "s": 31,
+          "sdg": 31,
+          "rz": 19,
+          "cx": 98,
+          "two_qubit": 98,
+          "total": 319
+        },
+        "sequence_composition": {
+          "noop": 1,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 19,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 98.0,
+          "total_excluding_hf_x": 315.0,
+          "total_including_hf_x": 319.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": -2.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 1.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 5.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.1934524360910315,
+        "best_batch_energy": -2.1951805499916235,
+        "best_so_far_error": -3.1086244689504383e-15,
+        "final_batch_best_error": -1.3322676295501878e-15
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 1,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed1"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.1951805499916253,
+        "error": -3.1086244689504383e-15,
+        "sequence": [
+          6,
+          12,
+          12,
+          4,
+          2,
+          18,
+          11,
+          3,
+          1,
+          16,
+          2,
+          0,
+          16,
+          5,
+          17,
+          3,
+          17,
+          10,
+          4,
+          9
+        ],
+        "iteration": 73,
+        "gate_count": {
+          "x": 4,
+          "h": 140,
+          "s": 35,
+          "sdg": 35,
+          "rz": 19,
+          "cx": 102,
+          "two_qubit": 102,
+          "total": 335
+        },
+        "sequence_composition": {
+          "noop": 1,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 19,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 102.0,
+          "total_excluding_hf_x": 331.0,
+          "total_including_hf_x": 335.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": 2.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 17.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 21.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.1931009429993042,
+        "best_batch_energy": -2.1951805499916244,
+        "best_so_far_error": -3.1086244689504383e-15,
+        "final_batch_best_error": -2.220446049250313e-15
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 2,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed2"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.195180549991627,
+        "error": -4.884981308350689e-15,
+        "sequence": [
+          17,
+          5,
+          13,
+          19,
+          19,
+          12,
+          10,
+          3,
+          18,
+          4,
+          20,
+          1,
+          10,
+          16,
+          0,
+          7,
+          13,
+          20,
+          1,
+          17
+        ],
+        "iteration": 24,
+        "gate_count": {
+          "x": 4,
+          "h": 132,
+          "s": 35,
+          "sdg": 35,
+          "rz": 19,
+          "cx": 94,
+          "two_qubit": 94,
+          "total": 319
+        },
+        "sequence_composition": {
+          "noop": 1,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 19,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 94.0,
+          "total_excluding_hf_x": 315.0,
+          "total_including_hf_x": 319.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": -6.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 1.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 5.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.194760734611289,
+        "best_batch_energy": -2.1951805499916226,
+        "best_so_far_error": -4.884981308350689e-15,
+        "final_batch_best_error": -4.440892098500626e-16
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 3,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed3"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.1951805499916253,
+        "error": -3.1086244689504383e-15,
+        "sequence": [
+          7,
+          17,
+          12,
+          10,
+          3,
+          0,
+          10,
+          12,
+          5,
+          0,
+          16,
+          1,
+          18,
+          3,
+          4,
+          0,
+          3,
+          1,
+          11,
+          4
+        ],
+        "iteration": 11,
+        "gate_count": {
+          "x": 4,
+          "h": 124,
+          "s": 33,
+          "sdg": 33,
+          "rz": 17,
+          "cx": 90,
+          "two_qubit": 90,
+          "total": 301
+        },
+        "sequence_composition": {
+          "noop": 3,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 17,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 90.0,
+          "total_excluding_hf_x": 297.0,
+          "total_including_hf_x": 301.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": -10.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": -17.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": -13.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.1951477109124475,
+        "best_batch_energy": -2.1951769864524895,
+        "best_so_far_error": -3.1086244689504383e-15,
+        "final_batch_best_error": 3.5635391326671595e-06
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 4,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed4"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.1951805499916257,
+        "error": -3.552713678800501e-15,
+        "sequence": [
+          10,
+          2,
+          4,
+          2,
+          15,
+          16,
+          12,
+          16,
+          12,
+          18,
+          10,
+          9,
+          6,
+          8,
+          15,
+          15,
+          8,
+          4,
+          9,
+          2
+        ],
+        "iteration": 51,
+        "gate_count": {
+          "x": 4,
+          "h": 152,
+          "s": 26,
+          "sdg": 26,
+          "rz": 20,
+          "cx": 112,
+          "two_qubit": 112,
+          "total": 340
+        },
+        "sequence_composition": {
+          "noop": 0,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 20,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 112.0,
+          "total_excluding_hf_x": 336.0,
+          "total_including_hf_x": 340.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": 12.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 22.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 26.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.19515560154716,
+        "best_batch_energy": -2.1951805499916244,
+        "best_so_far_error": -3.552713678800501e-15,
+        "final_batch_best_error": -2.220446049250313e-15
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 5,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed5"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.1951805499916253,
+        "error": -3.1086244689504383e-15,
+        "sequence": [
+          3,
+          14,
+          11,
+          1,
+          10,
+          6,
+          14,
+          15,
+          19,
+          4,
+          2,
+          20,
+          9,
+          16,
+          19,
+          3,
+          3,
+          12,
+          16,
+          5
+        ],
+        "iteration": 18,
+        "gate_count": {
+          "x": 4,
+          "h": 140,
+          "s": 30,
+          "sdg": 30,
+          "rz": 20,
+          "cx": 100,
+          "two_qubit": 100,
+          "total": 324
+        },
+        "sequence_composition": {
+          "noop": 0,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 20,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 100.0,
+          "total_excluding_hf_x": 320.0,
+          "total_including_hf_x": 324.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": 0.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 6.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 10.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.193221682434865,
+        "best_batch_energy": -2.1951805499916213,
+        "best_so_far_error": -3.1086244689504383e-15,
+        "final_batch_best_error": 8.881784197001252e-16
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 6,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed6"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.195180549991626,
+        "error": -3.9968028886505635e-15,
+        "sequence": [
+          3,
+          0,
+          19,
+          7,
+          19,
+          13,
+          17,
+          5,
+          3,
+          13,
+          9,
+          15,
+          9,
+          6,
+          1,
+          3,
+          3,
+          11,
+          16,
+          9
+        ],
+        "iteration": 9,
+        "gate_count": {
+          "x": 4,
+          "h": 140,
+          "s": 35,
+          "sdg": 35,
+          "rz": 19,
+          "cx": 102,
+          "two_qubit": 102,
+          "total": 335
+        },
+        "sequence_composition": {
+          "noop": 1,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 19,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 102.0,
+          "total_excluding_hf_x": 331.0,
+          "total_including_hf_x": 335.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": 2.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 17.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 21.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.194880841578513,
+        "best_batch_energy": -2.195180549991623,
+        "best_so_far_error": -3.9968028886505635e-15,
+        "final_batch_best_error": -8.881784197001252e-16
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 7,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed7"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.1951805499916253,
+        "error": -3.1086244689504383e-15,
+        "sequence": [
+          15,
+          9,
+          19,
+          14,
+          4,
+          14,
+          9,
+          9,
+          11,
+          7,
+          8,
+          1,
+          19,
+          16,
+          20,
+          9,
+          2,
+          16,
+          2,
+          17
+        ],
+        "iteration": 37,
+        "gate_count": {
+          "x": 4,
+          "h": 144,
+          "s": 24,
+          "sdg": 24,
+          "rz": 20,
+          "cx": 104,
+          "two_qubit": 104,
+          "total": 320
+        },
+        "sequence_composition": {
+          "noop": 0,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 20,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 104.0,
+          "total_excluding_hf_x": 316.0,
+          "total_including_hf_x": 320.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": 4.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 2.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 6.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.195174883956529,
+        "best_batch_energy": -2.1951805499916226,
+        "best_so_far_error": -3.1086244689504383e-15,
+        "final_batch_best_error": -4.440892098500626e-16
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 8,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed8"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.1951805499916253,
+        "error": -3.1086244689504383e-15,
+        "sequence": [
+          4,
+          7,
+          17,
+          17,
+          18,
+          8,
+          10,
+          6,
+          1,
+          0,
+          13,
+          4,
+          1,
+          11,
+          17,
+          19,
+          20,
+          6,
+          20,
+          3
+        ],
+        "iteration": 67,
+        "gate_count": {
+          "x": 4,
+          "h": 136,
+          "s": 35,
+          "sdg": 35,
+          "rz": 19,
+          "cx": 98,
+          "two_qubit": 98,
+          "total": 327
+        },
+        "sequence_composition": {
+          "noop": 1,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 19,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 98.0,
+          "total_excluding_hf_x": 323.0,
+          "total_including_hf_x": 327.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": -2.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 9.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 13.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.1937503774534806,
+        "best_batch_energy": -2.1951805499916226,
+        "best_so_far_error": -3.1086244689504383e-15,
+        "final_batch_best_error": -4.440892098500626e-16
+      }
+    },
+    {
+      "config": {
+        "experiment": {
+          "name": "h4_paper_fidelity",
+          "seed": 9,
+          "output_dir": "runs/h4_paper_fidelity_sweep_seed9"
+        },
+        "molecule": {
+          "name": "H4",
+          "bond_length_angstrom": 0.88,
+          "basis": "6-31g",
+          "active_electrons": 4,
+          "active_orbitals": 4,
+          "geometry": "linear_chain",
+          "spin_orbital_ordering": "interleaved"
+        },
+        "operator_pool": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "qsci": {
+          "shots": 100000,
+          "dmax": 2000,
+          "add_hf_det": true,
+          "enlarge_method": "symmetry_completion",
+          "backend": "determinant",
+          "cudaq_target": "qpp-cpu",
+          "cudaq_option": null,
+          "cudaq_reverse_bitstrings": false
+        },
+        "model": {
+          "d_model": 64,
+          "n_layers": 2,
+          "n_heads": 4,
+          "latent_dim": 12,
+          "qkan_layers": 1,
+          "daruan_terms": 4,
+          "dropout": 0.0
+        },
+        "training": {
+          "iterations": 100,
+          "batch_circuits": 10,
+          "policy_updates": 30,
+          "learning_rate": 5e-06,
+          "weight_decay": 0.01,
+          "grpo_clip": 0.2,
+          "repetition_penalty": 1.2,
+          "temperature": 1.0,
+          "device": "cpu"
+        }
+      },
+      "metadata": {
+        "git_commit": "b65f657dedbb855b653959451fad3d0eba3118ec",
+        "method_variant": "paper_pauli_evolution",
+        "pool_sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported"
+      },
+      "references": {
+        "hf_energy": -2.174799879875691,
+        "casci_energy": -2.195180549991622,
+        "ccsd_energy": -2.1951462890245423,
+        "n_qubits": 8,
+        "n_determinants": 36
+      },
+      "operator_pool": {
+        "vocab_size": 21,
+        "sequence_length": 20,
+        "spec": "paper_pauli_evolution",
+        "config": {
+          "sequence_length": 20,
+          "excitation_angle": 0.7853981633974483,
+          "include_noop": true,
+          "spec": "paper_pauli_evolution",
+          "params": null,
+          "ccsd_threshold": 1e-06,
+          "remove_z_ladder": true,
+          "only_use_first_pauli": true,
+          "dedupe_pauli_words": true
+        },
+        "sha256": "b28278a40908a2d51b4073efc139fa3e62636027d50862da4604574f4d8c9c51",
+        "operators": [
+          {
+            "token": 0,
+            "name": "identity",
+            "kind": "noop",
+            "angle": 0.0,
+            "annihilate": [],
+            "create": [],
+            "parent": null,
+            "pauli_terms": []
+          },
+          {
+            "token": 1,
+            "name": "paper_P_IIXXYXII__g0_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_0",
+            "pauli_terms": [
+              {
+                "coefficient": -0.24132779473007676,
+                "pauli_word": "IIXXYXII"
+              }
+            ]
+          },
+          {
+            "token": 2,
+            "name": "paper_P_XXIIYXII__g1_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_1",
+            "pauli_terms": [
+              {
+                "coefficient": -0.08725667006252413,
+                "pauli_word": "XXIIYXII"
+              }
+            ]
+          },
+          {
+            "token": 3,
+            "name": "paper_P_IYYIIYXI__g2_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_2",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "IYYIIYXI"
+              }
+            ]
+          },
+          {
+            "token": 4,
+            "name": "paper_P_YIYIYIXI__g3_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_3",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "YIYIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 5,
+            "name": "paper_P_IYIYIYIX__g4_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_4",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IYIYIYIX"
+              }
+            ]
+          },
+          {
+            "token": 6,
+            "name": "paper_P_XIIXYIIX__g5_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_5",
+            "pauli_terms": [
+              {
+                "coefficient": 0.07650022344251377,
+                "pauli_word": "XIIXYIIX"
+              }
+            ]
+          },
+          {
+            "token": 7,
+            "name": "paper_P_XIXIYIXI__g6_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_6",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "XIXIYIXI"
+              }
+            ]
+          },
+          {
+            "token": 8,
+            "name": "paper_P_IXIXIYIX__g7_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_7",
+            "pauli_terms": [
+              {
+                "coefficient": 0.05411933079097279,
+                "pauli_word": "IXIXIYIX"
+              }
+            ]
+          },
+          {
+            "token": 9,
+            "name": "paper_P_IIXXIIYX__g8_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_8",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05718277641961087,
+                "pauli_word": "IIXXIIYX"
+              }
+            ]
+          },
+          {
+            "token": 10,
+            "name": "paper_P_XXIIIIYX__g9_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_9",
+            "pauli_terms": [
+              {
+                "coefficient": -0.040370580395833876,
+                "pauli_word": "XXIIIIYX"
+              }
+            ]
+          },
+          {
+            "token": 11,
+            "name": "paper_P_IIYIIIXI__g10_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_10",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIYIIIXI"
+              }
+            ]
+          },
+          {
+            "token": 12,
+            "name": "paper_P_IIIYIIIX__g11_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_11",
+            "pauli_terms": [
+              {
+                "coefficient": -0.03333427347351004,
+                "pauli_word": "IIIYIIIX"
+              }
+            ]
+          },
+          {
+            "token": 13,
+            "name": "paper_P_IYYIYIIX__g12_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_12",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "IYYIYIIX"
+              }
+            ]
+          },
+          {
+            "token": 14,
+            "name": "paper_P_YIXIXIXI__g13_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_13",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIXIXI"
+              }
+            ]
+          },
+          {
+            "token": 15,
+            "name": "paper_P_IYIXIXIX__g14_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_14",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIXIX"
+              }
+            ]
+          },
+          {
+            "token": 16,
+            "name": "paper_P_XIIXIYXI__g15_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_15",
+            "pauli_terms": [
+              {
+                "coefficient": 0.02238089265154098,
+                "pauli_word": "XIIXIYXI"
+              }
+            ]
+          },
+          {
+            "token": 17,
+            "name": "paper_P_YIXIYIYI__g16_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_16",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "YIXIYIYI"
+              }
+            ]
+          },
+          {
+            "token": 18,
+            "name": "paper_P_IYIXIYIY__g17_p1",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_17",
+            "pauli_terms": [
+              {
+                "coefficient": -0.05411933079097279,
+                "pauli_word": "IYIXIYIY"
+              }
+            ]
+          },
+          {
+            "token": 19,
+            "name": "paper_P_YIIIXIII__g18_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_18",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "YIIIXIII"
+              }
+            ]
+          },
+          {
+            "token": 20,
+            "name": "paper_P_IYIIIXII__g19_p0",
+            "kind": "pauli_evolution",
+            "angle": 1.0,
+            "annihilate": [],
+            "create": [],
+            "parent": "tequila_gate_19",
+            "pauli_terms": [
+              {
+                "coefficient": -0.009615095539038093,
+                "pauli_word": "IYIIIXII"
+              }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "parameters": 47031,
+        "parameter_memory_mb": 0.17940902709960938
+      },
+      "best": {
+        "energy": -2.1951805499916253,
+        "error": -3.1086244689504383e-15,
+        "sequence": [
+          1,
+          11,
+          18,
+          17,
+          10,
+          10,
+          19,
+          20,
+          6,
+          4,
+          4,
+          8,
+          8,
+          8,
+          7,
+          12,
+          7,
+          16,
+          7,
+          15
+        ],
+        "iteration": 7,
+        "gate_count": {
+          "x": 4,
+          "h": 144,
+          "s": 28,
+          "sdg": 28,
+          "rz": 20,
+          "cx": 104,
+          "two_qubit": 104,
+          "total": 328
+        },
+        "sequence_composition": {
+          "noop": 0,
+          "single": 0,
+          "double": 0,
+          "pauli_evolution": 20,
+          "other": 0
+        },
+        "paper_table_i_count_view": {
+          "two_qubit": 104.0,
+          "total_excluding_hf_x": 324.0,
+          "total_including_hf_x": 328.0,
+          "hf_x": 4.0
+        },
+        "paper_table_i_delta": {
+          "two_qubit_vs_h4_gqkae_mean": 4.0,
+          "total_excluding_hf_x_vs_h4_gqkae_mean": 10.0,
+          "total_including_hf_x_vs_h4_gqkae_mean": 14.0
+        }
+      },
+      "final": {
+        "iteration": 99,
+        "mean_energy": -2.194525809505381,
+        "best_batch_energy": -2.1951805499916217,
+        "best_so_far_error": -3.1086244689504383e-15,
+        "final_batch_best_error": 4.440892098500626e-16
+      }
+    }
+  ]
+}
