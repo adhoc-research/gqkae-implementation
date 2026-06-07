@@ -133,20 +133,3 @@ uv run pytest
 Coverage includes the fermion mapping, gate counting, QSCI (and symmetry completion),
 the CUDA-Q backend, the QKAN / HQKANsformer model variants, GRPO, config handling,
 spin-orbital ordering, and operator-pool / circuit construction.
-
-## Results dashboard (GitHub Pages)
-
-A dashboard lives at `index.html` (+ `assets/`). It
-visualizes the committed H4 PES results (energy curve, accuracy, gate budgets,
-convergence, and model scaling) directly from `runs/*.json`.
-
-```bash
-# regenerate assets/data.js from the run artifacts
-uv run python scripts/build_site_data.py
-
-# preview locally (or just open index.html directly)
-python -m http.server 8000   # then visit http://localhost:8000/
-```
-
-To publish: push to GitHub and set **Settings → Pages → Build from branch → `/ (root)`**.
-The page is pure static HTML/CSS/JS (Apache ECharts via CDN) with no build step.
