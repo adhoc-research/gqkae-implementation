@@ -29,7 +29,7 @@ gqkae/                     core package
   fermion_mapping.py       Jordan-Wigner fermion→Pauli transform
   circuits.py              sequence→circuit + determinant-space simulator
   cudaq_backend.py         CUDA-Q sampling and resource estimation
-  gate_counting.py         paper-style all-to-all Pauli-evolution gate counts
+  gate_counting.py         all-to-all Pauli-evolution gate counts
   qsci.py                  quantum-selected CI subspace diagonalization
   reporting.py             run evaluation / report formatting
   models/
@@ -39,7 +39,7 @@ gqkae/                     core package
   training/
     runner.py              end-to-end training loop (entry point)
     grpo.py                clipped GRPO objective and advantages
-configs/                   YAML experiment configs (smoke → paper-fidelity)
+configs/                   YAML experiment configs (smoke and full-scale)
 data/                      cited Pauli-evolution operator-pool reference
 scripts/                   train / evaluate / benchmark / PES / reporting scripts
 tests/                     pytest suite (11 modules)
@@ -80,7 +80,7 @@ uv run python scripts/evaluate_mvp.py --run-dir runs/h4_mvp
 ```
 
 Configs default to small "smoke" values; inline comments in `configs/h4_mvp.yaml` show
-the paper-like settings (e.g. `shots=100000`, `dmax=2000`, `iterations=100`,
+the full settings from the paper (e.g. `shots=100000`, `dmax=2000`, `iterations=100`,
 `batch_circuits=10`). Override any field with `--override key=value`.
 
 ## CUDA-Q runs
@@ -90,7 +90,7 @@ the paper-like settings (e.g. `shots=100000`, `dmax=2000`, `iterations=100`,
 uv run python scripts/train_mvp.py --config configs/h4_cudaq_smoke.yaml
 uv run python scripts/evaluate_mvp.py --run-dir runs/h4_cudaq_smoke
 
-# Paper-like H4 settings; set `qsci.cudaq_target` to `nvidia` / `tensornet` as appropriate:
+# Full H4 settings from the paper; set `qsci.cudaq_target` to `nvidia` / `tensornet` as appropriate:
 uv run python scripts/train_mvp.py --config configs/h4_cudaq_paper_like.yaml
 ```
 
@@ -104,7 +104,7 @@ uv run python scripts/run_h4_cudaq_pes_five_trials.py
 
 ## Gate counting
 
-Resource reporting uses the paper-style **all-to-all Pauli-evolution** convention:
+Resource reporting uses the **all-to-all Pauli-evolution** convention from the paper:
 arbitrary `rz` rotations, `cx` ladders, and `h` / `s` / `sdg` Clifford basis changes,
 with HF-reference `x` gates reported separately. This matches the cited `gqe-for-qsci`
 decomposition (see `gqkae/gate_counting.py`).
