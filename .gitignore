@@ -20,3 +20,13 @@ dist/
 Thumbs.db
 .vscode/
 .idea/
+
+docs/
+AGENTS.md
+
+# Artifacts / generated output
+*.pt
+*.pth
+wandb/
+runs/
+

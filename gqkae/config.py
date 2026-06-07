@@ -54,12 +54,15 @@ class QSCIConfig:
 
 @dataclass(slots=True)
 class ModelConfig:
+    variant: str = "hqkan"  # hqkan/gqkae or gpt/gqe
     d_model: int = 64
     n_layers: int = 2
     n_heads: int = 4
     latent_dim: int = 12
     qkan_layers: int = 1
     daruan_terms: int = 4
+    ffn_mult: int = 4
+    d_ff: int | None = None
     dropout: float = 0.0
 
 

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generative Quantum-inspired Kolmogorov-Arnold Eigensolver (paper reproduction)</title>
+  <meta name="description" content="An independent reimplementation of the Generative Quantum-inspired Kolmogorov-Arnold Eigensolver (GQKAE), reproducing the H4 (4e,4o)/6-31G benchmark with CUDA-Q sampling, QSCI subspace diagonalization, and a GRPO-trained HQKANsformer policy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="layout">
+  <!-- ===================== TOC rail ===================== -->
+  <nav class="toc" aria-label="Contents">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#summary"><span class="num"></span>Summary of results</a></li>
+      <li><a href="#introduction"><span class="num">1</span>Introduction</a></li>
+      <li><a href="#method"><span class="num">2</span>Method</a></li>
+      <li><a href="#pes"><span class="num">3</span>Potential energy surface</a></li>
+      <li><a href="#accuracy"><span class="num">4</span>Accuracy</a></li>
+      <li><a href="#resources"><span class="num">5</span>Quantum resources</a></li>
+      <li><a href="#convergence"><span class="num">6</span>Convergence</a></li>
+      <li><a href="#scaling"><span class="num">7</span>Model scaling</a></li>
+      <li><a href="#cost"><span class="num">8</span>Computational cost</a></li>
+      <li><a href="#repro"><span class="num">9</span>Reproducibility</a></li>
+      <li><a href="#references"><span class="num">10</span>References</a></li>
+    </ol>
+    <div class="toc-foot">
+      Figures generated from <code>runs/</code>.<br />
+      Build <code id="meta-commit"></code><br />
+      <span id="meta-generated"></span>
+    </div>
+  </nav>
+
+  <!-- ===================== Article ===================== -->
+  <main class="main">
+    <article class="article">
+      <!-- Masthead -->
+      <header class="masthead" id="top">
+        <h1>Generative Quantum-inspired Kolmogorov-Arnold Eigensolver</h1>
+        <p class="subtitle">Paper Implementation / Reproduction</p>
+        <p class="byline">A from-scratch reproduction of the GQKAE method, evaluated on the paper's
+          H4&nbsp;(4e,&nbsp;4o)&nbsp;/&nbsp;6-31G benchmark across a full potential-energy surface using
+          NVIDIA&nbsp;CUDA-Q sampling and QSCI subspace diagonalization.</p>
+        <div class="links">
+          <a href="Generative%20Quantum-inspired%20Kolmogorov-Arnold%20Eigensolver.pdf" target="_blank" rel="noopener">Original paper (PDF)</a>
+        </div>
+      </header>
+
+      <!-- Abstract -->
+      <div class="abstract">
+        <h2>Abstract</h2>
+        <p>The Generative Quantum-inspired Kolmogorov-Arnold Eigensolver (GQKAE) recasts ground-state
+          estimation as a sequence-generation problem: a policy network proposes discrete operator
+          sequences whose induced quantum circuits are sampled and post-processed by quantum-selected
+          configuration interaction (QSCI). This page documents an independent reimplementation and reports
+          its behaviour on the H4 linear-chain active-space benchmark.</p>
+        <p>Across a ten-point dissociation grid with five independent seeds per geometry (50 runs in total),
+          the reimplementation reproduces the CASCI potential-energy surface to numerical precision and yields
+          gate budgets consistent with the scale reported in the paper's H4 Table&nbsp;I. All figures below are
+          computed directly from the committed run artifacts.</p>
+      </div>
+
+      <!-- ===================== Summary ===================== -->
+      <section id="summary">
+        <div class="keyfigs">
+          <div class="kf"><div class="k-label">Runs at chemical accuracy</div><div class="k-value" id="stat-jobs"></div><div class="k-note">10 geometries × 5 seeds, 0 failures</div></div>
+          <div class="kf"><div class="k-label">Mean |error| vs CASCI</div><div class="k-value" id="stat-err"></div><div class="k-note">Hartree, across the grid</div></div>
+          <div class="kf"><div class="k-label">Mean two-qubit gates</div><div class="k-value" id="stat-cx"></div><div class="k-note">paper Table-I: 100 ± 3.7</div></div>
+          <div class="kf"><div class="k-label">Total GPU compute</div><div class="k-value" id="stat-runtime"></div><div class="k-note">hours, 50 runs end-to-end</div></div>
+        </div>
+      </section>
+
+      <!-- ===================== Introduction ===================== -->
+      <section id="introduction">
+        <h2 class="sec">Introduction</h2>
+        <p>Variational quantum eigensolvers optimise the continuous parameters of a fixed circuit ansatz.
+          GQKAE instead treats the structure of the circuit as the object to be learned: a generative
+          policy emits a sequence of discrete operator tokens, each sequence defines a circuit, and the quality
+          of the resulting state is scored by the energy obtained after subspace diagonalization. Reinforcement
+          learning then improves the policy. No continuous circuit angles are optimised in the loop.</p>
+        <p>This reimplementation follows the paper's design choices for the H4 active-space study: a UCCSD-derived
+          Pauli-evolution operator pool, an HQKANsformer policy with quantum-inspired Kolmogorov-Arnold layers,
+          CUDA-Q circuit sampling, QSCI with symmetry completion, and a Group Relative Policy Optimization (GRPO)
+          objective. The goal is reproduction and verification rather than novelty; the sections below report the
+          method and the measured results.</p>
+      </section>
+
+      <!-- ===================== Method ===================== -->
+      <section id="method">
+        <h2 class="sec">Method</h2>
+        <p class="lead">The training loop has four stages, repeated for a fixed number of iterations.</p>
+
+        <figure>
+          <div class="figbox">
+            <div class="figbar"><span class="ftitle">Pipeline</span><span class="fhint">generate → sample → diagonalize → update</span></div>
+            <div class="pipeline">
+              <div class="pstep"><div class="ps-n">PySCF</div><div class="ps-t">Active space</div><div class="ps-d">H4 CAS(4e,4o), 6-31G integrals</div></div>
+              <div class="pstep"><div class="ps-n">UCCSD</div><div class="ps-t">Operator pool</div><div class="ps-d">discrete Pauli-evolution tokens</div></div>
+              <div class="pstep"><div class="ps-n">policy</div><div class="ps-t">HQKANsformer</div><div class="ps-d">autoregressive sequence sampler</div></div>
+              <div class="pstep"><div class="ps-n">CUDA-Q</div><div class="ps-t">Circuit sampling</div><div class="ps-d">100k shots, nvidia target</div></div>
+              <div class="pstep"><div class="ps-n">QSCI</div><div class="ps-t">Subspace CI</div><div class="ps-d">diagonalize in sampled determinants</div></div>
+              <div class="pstep"><div class="ps-n">GRPO</div><div class="ps-t">Policy update</div><div class="ps-d">reward = −energy</div></div>
+            </div>
+          </div>
+          <figcaption><span class="lbl"></span>The generate–sample–diagonalize–update loop used throughout this work.</figcaption>
+        </figure>
+
+        <h3 class="sub">HQKANsformer and DARUAN activations</h3>
+        <p>The policy is a compact transformer whose feed-forward blocks are quantum-inspired Kolmogorov-Arnold
+          (QKAN) layers. Each edge carries a learnable univariate response built from re-uploaded sinusoidal
+          features, the DARUAN edge bank, a classical, differentiable analogue of single-qubit data
+          re-uploading. As shown in Section&nbsp;7, this makes the model substantially more parameter-efficient than
+          a comparable GQE transformer of equivalent vocabulary and sequence length.</p>
+
+        <h3 class="sub">QSCI: quantum-selected configuration interaction</h3>
+        <p>Rather than estimating an expectation value shot by shot, the sampled measurement bitstrings define a
+          set of computational-basis determinants. The molecular Hamiltonian is projected onto this subspace and
+          diagonalized exactly. A symmetry-completion step enlarges the subspace to respect particle-number and
+          spin symmetry; in the H4 active space this is sufficient to recover the CASCI eigenvalue (Section&nbsp;4).</p>
+
+        <h3 class="sub">GRPO objective</h3>
+        <p>Each sampled sequence is scored by its negative QSCI energy. The policy is trained with a token-wise
+          clipped Group Relative Policy Optimization objective: advantages are normalised within each sampled
+          batch, so the policy is pushed toward the best operator orderings discovered so far without a learned
+          value function.</p>
+
+        <div class="note">
+          On the magnitude of the errors. The errors reported below (order 10⁻¹⁵&nbsp;Ha) indicate that QSCI
+          recovers the exact CASCI eigenvalue within the H4 (4e,&nbsp;4o) active space. This is a faithful but
+          deliberately small benchmark that mirrors the paper's setup; it demonstrates the full pipeline
+          end-to-end and is not a claim of exceeding full configuration interaction.
+        </div>
+      </section>
+
+      <!-- ===================== PES ===================== -->
+      <section id="pes">
+        <h2 class="sec">Potential energy surface</h2>
+        <p class="lead">Energies along the H4 dissociation coordinate, compared against exact CASCI.</p>
+        <figure class="outset">
+          <div class="figbox">
+            <div class="figbar"><span class="ftitle">Energy vs bond length</span><span class="fhint">5 seeds per geometry</span></div>
+            <div id="chart-pes" class="chart tall"></div>
+          </div>
+          <figcaption><span class="lbl"></span>The learned eigensolver (dashed) tracks the exact CASCI curve
+            (solid) at every bond length; per-seed points show run-to-run spread. The Hartree–Fock curve is shown
+            for reference.</figcaption>
+        </figure>
+        <figure>
+          <div class="figbox">
+            <div class="figbar"><span class="ftitle">Per-geometry summary</span><span class="fhint">mean over seeds</span></div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>R (Å)</th><th>CASCI (Ha)</th><th>GQKAE mean (Ha)</th><th>mean |err| (Ha)</th><th>CX</th><th>total</th><th>runtime (s)</th><th>status</th></tr></thead>
+                <tbody id="pes-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+          <figcaption><span class="lbl"></span>Reproduced energies, mean gate counts, and per-run wall time across
+            the dissociation grid.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ===================== Accuracy ===================== -->
+      <section id="accuracy">
+        <h2 class="sec">Accuracy</h2>
+        <p class="lead">Absolute error against CASCI, on a logarithmic scale.</p>
+        <figure class="outset">
+          <div class="figrow two">
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">|error| vs CASCI across the PES</span><span class="fhint">log scale</span></div>
+              <div id="chart-error" class="chart"></div>
+            </div>
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Error by geometry and seed</span><span class="fhint">bond × seed</span></div>
+              <div id="chart-err-heat" class="chart"></div>
+            </div>
+          </div>
+          <figcaption><span class="lbl"></span>Every run lands many orders of magnitude below the chemical-accuracy
+            threshold (1.6&nbsp;mHa); the heatmap shows the per-run absolute error across all 50 runs.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ===================== Resources ===================== -->
+      <section id="resources">
+        <h2 class="sec">Quantum resources</h2>
+        <p class="lead">Circuit cost under the paper's gate-counting convention.</p>
+        <figure class="outset">
+          <div class="figrow two">
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Gate counts vs bond length</span><span class="fhint">vs paper Table-I</span></div>
+              <div id="chart-gates" class="chart"></div>
+            </div>
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Two-qubit gates by geometry and seed</span><span class="fhint">bond × seed</span></div>
+              <div id="chart-cx-heat" class="chart"></div>
+            </div>
+          </div>
+          <figcaption><span class="lbl"></span>Gate counts use the all-to-all Pauli-evolution convention (arbitrary
+            <code>rz</code>, <code>cx</code> ladders, Clifford basis changes; HF-reference <code>x</code> reported
+            separately). Dashed lines mark the paper's H4 Table-I means (two-qubit 100&nbsp;±&nbsp;3.7,
+            total 314&nbsp;±&nbsp;15).</figcaption>
+        </figure>
+      </section>
+
+      <!-- ===================== Convergence ===================== -->
+      <section id="convergence">
+        <h2 class="sec">Convergence</h2>
+        <p class="lead">Per-iteration training trajectories. Select a run to inspect its dynamics.</p>
+        <div style="margin: 4px 0 12px;"><label class="control">Run&nbsp; <select id="conv-select"></select></label></div>
+        <figure class="outset">
+          <div class="figrow two" style="grid-template-columns: 1fr 1fr;">
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Best-so-far error and loss</span><span class="fhint">vs iteration</span></div>
+              <div id="chart-conv" class="chart"></div>
+            </div>
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Subspace and gate dynamics</span><span class="fhint">vs iteration</span></div>
+              <div id="chart-conv-dim" class="chart"></div>
+            </div>
+          </div>
+          <figcaption><span class="lbl"></span>GRPO drives the policy toward operator sequences whose QSCI subspace
+            captures the ground state: the best-so-far error collapses while the selected subspace grows.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ===================== Scaling ===================== -->
+      <section id="scaling">
+        <h2 class="sec">Model scaling</h2>
+        <p class="lead">Parameter efficiency of the quantum-inspired policy relative to a GQE transformer.</p>
+        <figure class="outset">
+          <div class="figrow three">
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Trainable parameters</span><span class="fhint">log scale</span></div>
+              <div id="chart-params" class="chart short"></div>
+            </div>
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Parameter memory</span><span class="fhint">MB</span></div>
+              <div id="chart-mem" class="chart short"></div>
+            </div>
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Optimizer-update time</span><span class="fhint">mean seconds</span></div>
+              <div id="chart-uptime" class="chart short"></div>
+            </div>
+          </div>
+          <figcaption><span class="lbl"></span>At paper scale the GQKAE policy uses roughly 14.3M parameters against
+            the GQE transformer's 55.4M for the same vocabulary and sequence length.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ===================== Cost ===================== -->
+      <section id="cost">
+        <h2 class="sec">Computational cost</h2>
+        <p class="lead">Where wall-clock time is spent.</p>
+        <figure class="outset">
+          <div class="figrow two">
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Mean per-iteration time split</span><span class="fhint">seconds</span></div>
+              <div id="chart-runtime" class="chart"></div>
+            </div>
+            <div class="figbox">
+              <div class="figbar"><span class="ftitle">Mean run time by bond length</span><span class="fhint">100 iterations / run</span></div>
+              <div id="chart-job-runtime" class="chart"></div>
+            </div>
+          </div>
+          <figcaption><span class="lbl"></span>Quantum sampling and QSCI evaluation dominate each iteration; policy
+            generation and the GRPO update step are comparatively inexpensive.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ===================== Repro ===================== -->
+      <section id="repro">
+        <h2 class="sec">Reproducibility</h2>
+        <p class="lead">The production run charted above, and how to regenerate the figures.</p>
+        <pre class="code"><span class="c"># five independent seeds across the H4 dissociation grid, exact paper settings</span>
+uv run --extra paper --extra cuda python scripts/run_h4_cudaq_pes_five_trials.py \
+  --config configs/h4_paper_fidelity_cudaq_nvidia.yaml \
+  --seeds 0 1 2 3 4 --target nvidia \
+  --output-prefix runs/h4_pes_cudaq_nvidia --skip-existing
+
+<span class="c"># rebuild this page's data from the run artifacts</span>
+python scripts/build_site_data.py</pre>
+
+        <figure>
+          <div class="figbox">
+            <div class="figbar"><span class="ftitle">Experimental setup</span><span class="fhint" id="pv-env"></span></div>
+            <table class="kv">
+              <tbody>
+                <tr><td>Molecule</td><td>H4 linear chain</td></tr>
+                <tr><td>Active space / basis</td><td>(4e, 4o) · 6-31G</td></tr>
+                <tr><td>Spin-orbital ordering</td><td>interleaved</td></tr>
+                <tr><td>Sequence length</td><td>20</td></tr>
+                <tr><td>Backend</td><td>CUDA-Q · nvidia (<span id="pv-cudaq"></span>)</td></tr>
+                <tr><td>Accelerator</td><td id="pv-gpu"></td></tr>
+                <tr><td>Shots per circuit</td><td id="pv-shots"></td></tr>
+                <tr><td>QSCI d<sub>max</sub></td><td>2000 · symmetry completion</td></tr>
+                <tr><td>Iterations × batch</td><td id="pv-iters-batch"></td></tr>
+                <tr><td>Grid</td><td id="pv-grid"></td></tr>
+                <tr><td>Optimizer</td><td>GRPO (clip 0.2)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption><span class="lbl"></span>Configuration used for the reported runs, read from the run summary.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ===================== References ===================== -->
+      <section id="references" class="references">
+        <h2 class="sec">References</h2>
+        <ol>
+          <li>Original work: Generative Quantum-inspired Kolmogorov-Arnold Eigensolver. See the
+            <a href="Generative%20Quantum-inspired%20Kolmogorov-Arnold%20Eigensolver.pdf" target="_blank" rel="noopener">paper PDF</a>
+            in the repository root. This page documents an independent reimplementation; please cite the original
+            authors for the method.</li>
+          <li>Reimplementation source: <code>src/gqkae/</code>; the figures here are produced from the committed
+            run artifacts in <code>runs/</code> via <code>scripts/build_site_data.py</code>.</li>
+        </ol>
+
+        <div class="footer">
+          <p>An independent, educational reproduction of the Generative Quantum-inspired Kolmogorov-Arnold
+            Eigensolver. All figures are generated directly from committed run artifacts in <code>runs/</code> and
+            can be rebuilt with <code>scripts/build_site_data.py</code>. Not affiliated with or endorsed by the
+            original authors. Interactive figures rendered with Apache ECharts.</p>
+        </div>
+      </section>
+    </article>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/dashboard.js"></script>
+</body>
+</html>

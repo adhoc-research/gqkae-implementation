@@ -131,6 +131,7 @@ def _timing_stats(values: list[float]) -> dict[str, float]:
 
 def train(config: Config) -> dict[str, Any]:
     torch = _require_torch()
+    from ..models.gpt_policy import GPTPolicy
     from ..models.hqkansformer import HQKANsformerPolicy, count_parameters, parameter_memory_mb
     from .grpo import grpo_loss, normalize_advantages
 
@@ -145,7 +146,17 @@ def train(config: Config) -> dict[str, Any]:
     pool = build_operator_pool(problem, config.operator_pool)
     setup_elapsed_s = time.perf_counter() - setup_start
     device = torch.device(config.training.device)
-    model = HQKANsformerPolicy(pool.vocab_size, pool.sequence_length, config.model).to(device)
+    model_variant = str(config.model.variant).lower()
+    if model_variant in {"hqkan", "gqkae", "hqkansformer"}:
+        model = HQKANsformerPolicy(pool.vocab_size, pool.sequence_length, config.model).to(device)
+        model_family = "gqkae"
+    elif model_variant in {"gpt", "gqe", "transformer"}:
+        model = GPTPolicy(pool.vocab_size, pool.sequence_length, config.model).to(device)
+        model_family = "gqe"
+    else:
+        raise ValueError(
+            f"unknown model.variant={config.model.variant!r}; expected hqkan/gqkae or gpt/gqe"
+        )
     optimizer = torch.optim.AdamW(
         model.parameters(),
         lr=config.training.learning_rate,
@@ -298,6 +309,8 @@ def train(config: Config) -> dict[str, Any]:
         "metadata": {
             "git_commit": _git_commit(),
             "method_variant": config.operator_pool.spec,
+            "model_variant": model_variant,
+            "model_family": model_family,
             "pool_sha256": pool_manifest["sha256"],
             "gate_count_table_i_convention": "paper/cited Pauli-evolution counts excluding HF-reference x gates; total_including_hf_x also reported",
             "detailed_timing": detailed_timing,
@@ -318,6 +331,8 @@ def train(config: Config) -> dict[str, Any]:
             "operators": pool_manifest["operators"],
         },
         "model": {
+            "variant": model_variant,
+            "family": model_family,
             "parameters": count_parameters(model),
             "parameter_memory_mb": parameter_memory_mb(model),
         },
