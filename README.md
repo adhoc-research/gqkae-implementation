@@ -1,6 +1,8 @@
-# GQKAE — H4
+# GQKAE - H4
 
-A paper-faithful implementation of the **Generative Quantum-inspired
+> Project page: [adhoc-research.github.io/gqkae-implementation](https://adhoc-research.github.io/gqkae-implementation)
+
+An implementation of the **Generative Quantum-inspired
 Kolmogorov-Arnold Eigensolver** (GQKAE) for the H4 `(4e, 4o)` / 6-31G / `L=20` benchmark.
 The full paper is included in the repo root
 (`Generative Quantum-inspired Kolmogorov-Arnold Eigensolver.pdf`).
@@ -134,9 +136,9 @@ spin-orbital ordering, and operator-pool / circuit construction.
 
 ## Results dashboard (GitHub Pages)
 
-A self-contained, Grafana-style dashboard lives at `index.html` (+ `assets/`). It
-visualizes the committed H4 PES results — energy curve, accuracy, gate budgets,
-convergence, and model scaling — directly from `runs/*.json`.
+A dashboard lives at `index.html` (+ `assets/`). It
+visualizes the committed H4 PES results (energy curve, accuracy, gate budgets,
+convergence, and model scaling) directly from `runs/*.json`.
 
 ```bash
 # regenerate assets/data.js from the run artifacts
@@ -147,4 +149,4 @@ python -m http.server 8000   # then visit http://localhost:8000/
 ```
 
 To publish: push to GitHub and set **Settings → Pages → Build from branch → `/ (root)`**.
-The page is pure static HTML/CSS/JS (Apache ECharts via CDN) — no build step.
+The page is pure static HTML/CSS/JS (Apache ECharts via CDN) with no build step.
