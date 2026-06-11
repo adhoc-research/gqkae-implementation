@@ -7,6 +7,8 @@ Kolmogorov-Arnold Eigensolver** (GQKAE) for the H4 `(4e, 4o)` / 6-31G / `L=20` b
 The full paper is included in the repo root
 (`Generative Quantum-inspired Kolmogorov-Arnold Eigensolver.pdf`).
 
+Also an experiment in guiding Claude for accurate paper reproductions!
+
 The implementation runs the paper's full training loop:
 
 1. **PySCF** builds the H4 active space (CAS(4,4)) reference and CASCI ground truth.
